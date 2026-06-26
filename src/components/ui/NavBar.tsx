@@ -1,4 +1,5 @@
 import { BadgeDollarSign, Bell, Home, User } from 'lucide-react'
+import { useThemeStore } from '../../store/useThemeStore'
 
 type NavItem = {
 	id: string
@@ -35,6 +36,8 @@ interface BottomNavProps {
 }
 
 export default function BottomNav({ active, onChange }: BottomNavProps) {
+	const accent = useThemeStore(state => state.accent)
+
 	return (
 		<div className="fixed bottom-4 left-1/2 z-50 w-[360px] -translate-x-1/2">
 			<nav className="flex items-center justify-around rounded-3xl bg-[#1B0618] px-4 py-3 shadow-2xl">
@@ -50,13 +53,16 @@ export default function BottomNav({ active, onChange }: BottomNavProps) {
 						>
 							<Icon
 								size={26}
-								className={isActive ? 'text-yellow-400' : 'text-white'}
+								style={{
+									color: isActive ? accent : '#fff'
+								}}
 							/>
 
 							<span
-								className={`text-[11px] ${
-									isActive ? 'text-yellow-400' : 'text-white'
-								}`}
+								style={{
+									fontSize: '11px',
+									color: isActive ? accent : '#fff'
+								}}
 							>
 								{item.label}
 							</span>

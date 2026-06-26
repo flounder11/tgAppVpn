@@ -2,7 +2,7 @@ import HomePage from './page/HomePage'
 
 function App() {
 	return (
-		<div className="min-h-[100dvh] bg-[var(--bg-premium)] text-white">
+		<div>
 			<HomePage />
 		</div>
 	)

@@ -1,33 +1,96 @@
+import { useEffect, useState } from 'react'
 import EarthImg from '../../assets/Container.png'
 import TrafficImg from '../../assets/export.png'
 import SettingImg from '../../assets/setting.png'
-import Globe from '../ui/globe'
+import { useThemeStore } from '../../store/useThemeStore'
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	type CarouselApi
+} from '../ui/carousel'
+import { slides } from './HomeSildesData'
+import SliderMain from './SliderMain'
 
-export default function HomeMain() {
+type HomeMainProps = {
+	currentSlide: number
+	onSlideChange: (index: number) => void
+}
+
+export default function HomeMain({
+	currentSlide,
+	onSlideChange
+}: HomeMainProps) {
+	const [api, setApi] = useState<CarouselApi>()
+	const [current, setCurrent] = useState(currentSlide)
+	const activeSlide = slides[current]
+
+	const accent = useThemeStore(state => state.accent)
+
+	const { setTheme } = useThemeStore()
+
+	useEffect(() => {
+		if (!api) return
+
+		const updateSlide = () => {
+			const index = api.selectedScrollSnap()
+
+			setCurrent(index)
+			onSlideChange(index)
+
+			const slide = slides[index]
+			setTheme(slide.accent, slide.bg)
+		}
+
+		updateSlide()
+
+		api.on('select', updateSlide)
+	}, [api, onSlideChange])
+
 	return (
 		<div>
-			<p className="text-[#E3A126] text-6xl text-transparent [-webkit-text-stroke:2px_#d4a017] text-center font-bold font-tektur">
-				ПРЕМИУМ
+			<p
+				style={{ WebkitTextStroke: `2px ${accent}` }}
+				className="text-6xl text-transparent text-center font-bold font-tektur"
+			>
+				{activeSlide.label}
 			</p>
 
-			<div className="relative w-[400px] h-[400px] mx-auto">
-				<Globe />
+			<Carousel
+				setApi={setApi}
+				opts={{
+					align: 'center'
+				}}
+			>
+				<CarouselContent>
+					{slides.map(slide => (
+						<CarouselItem key={slide.id}>
+							<SliderMain slide={slide} />
+						</CarouselItem>
+					))}
+				</CarouselContent>
+			</Carousel>
 
-				<div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-					<h2 className="text-mozilla-headline text-9xl leading-[0.8] font-semibold text-[#E3A126]">
-						14
-					</h2>
-					<p className="text-mozilla-headline text-2xl font-medium text-[#E3A126]">
-						Осталось
-					</p>
-					<p className="text-mozilla-headline text-2xl font-medium text-[#E3A126]">
-						дней
-					</p>
-				</div>
+			<div className="flex justify-center gap-2 mb-4">
+				{slides.map((_, index) => (
+					<button
+						key={index}
+						onClick={() => api?.scrollTo(index)}
+						className={`h-2 w-2 rounded-full transition-all ${
+							current === index ? 'scale-125' : ''
+						}`}
+						style={{
+							backgroundColor: current === index ? accent : `${accent}4D`
+						}}
+					/>
+				))}
 			</div>
 
-			<button className="text-manrope text-xl font-semibold text-[#E3A126] border border-[#E3A126] rounded-4xl py-4 px-18 flex mx-auto mb-4">
-				Продлить тариф
+			<button
+				style={{ color: accent, borderColor: accent }}
+				className="text-manrope text-xl font-semibold border rounded-4xl py-4 px-18 flex mx-auto mb-4"
+			>
+				{activeSlide.days === 0 ? 'Приобрести тариф' : 'Продлить тариф'}
 			</button>
 
 			<div className="max-w-[300px] flex gap-x-5 items-center mx-auto mb-4">

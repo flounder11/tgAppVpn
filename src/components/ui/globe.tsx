@@ -1,8 +1,23 @@
 import createGlobe from 'cobe'
 import { useEffect, useRef } from 'react'
 
-export default function Globe() {
+type GlobeProps = {
+	color: string
+	glowColor: string
+}
+
+export default function Globe({ glowColor, color }: GlobeProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
+
+	function hexToRgb(hex: string): [number, number, number] {
+		const value = hex.replace('#', '')
+
+		const r = parseInt(value.substring(0, 2), 16) / 255
+		const g = parseInt(value.substring(2, 4), 16) / 255
+		const b = parseInt(value.substring(4, 6), 16) / 255
+
+		return [r, g, b]
+	}
 
 	useEffect(() => {
 		const globe = createGlobe(canvasRef.current!, {
@@ -14,10 +29,10 @@ export default function Globe() {
 			dark: 1,
 			diffuse: 1.2,
 			mapSamples: 16000,
-			mapBrightness: 12,
-			baseColor: [33 / 255, 4 / 255, 23 / 255],
+			mapBrightness: 24,
+			baseColor: hexToRgb(color),
 			markerColor: [0.2, 0.4, 1],
-			glowColor: [161 / 255, 112 / 255, 22 / 255],
+			glowColor: hexToRgb(glowColor),
 			arcColor: [0.3, 0.5, 1],
 			arcWidth: 0.5,
 			arcHeight: 0.3
