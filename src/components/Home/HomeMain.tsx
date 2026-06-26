@@ -12,18 +12,11 @@ import {
 import { slides } from './HomeSildesData'
 import SliderMain from './SliderMain'
 
-type HomeMainProps = {
-	currentSlide: number
-	onSlideChange: (index: number) => void
-}
-
-export default function HomeMain({
-	currentSlide,
-	onSlideChange
-}: HomeMainProps) {
+export default function HomeMain() {
 	const [api, setApi] = useState<CarouselApi>()
-	const [current, setCurrent] = useState(currentSlide)
-	const activeSlide = slides[current]
+	const currentSlide = useThemeStore(state => state.currentSlide)
+	const setCurrentSlide = useThemeStore(state => state.setCurrentSlide)
+	const activeSlide = slides[currentSlide]
 
 	const accent = useThemeStore(state => state.accent)
 
@@ -34,18 +27,17 @@ export default function HomeMain({
 
 		const updateSlide = () => {
 			const index = api.selectedScrollSnap()
-
-			setCurrent(index)
-			onSlideChange(index)
+			setCurrentSlide(index)
 
 			const slide = slides[index]
 			setTheme(slide.accent, slide.bg)
 		}
 
-		updateSlide()
-
 		api.on('select', updateSlide)
-	}, [api, onSlideChange])
+		api.scrollTo(currentSlide)
+
+		updateSlide()
+	}, [api, currentSlide])
 
 	return (
 		<div>
@@ -77,10 +69,10 @@ export default function HomeMain({
 						key={index}
 						onClick={() => api?.scrollTo(index)}
 						className={`h-2 w-2 rounded-full transition-all ${
-							current === index ? 'scale-125' : ''
+							currentSlide === index ? 'scale-125' : ''
 						}`}
 						style={{
-							backgroundColor: current === index ? accent : `${accent}4D`
+							backgroundColor: currentSlide === index ? accent : `${accent}4D`
 						}}
 					/>
 				))}

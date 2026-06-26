@@ -1,4 +1,5 @@
 import { BadgeDollarSign, Bell, Home, User } from 'lucide-react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useThemeStore } from '../../store/useThemeStore'
 
 type NavItem = {
@@ -14,7 +15,7 @@ const items: NavItem[] = [
 		icon: Home
 	},
 	{
-		id: 'subscriptions',
+		id: 'sub',
 		label: 'Подписки',
 		icon: Bell
 	},
@@ -30,12 +31,10 @@ const items: NavItem[] = [
 	}
 ]
 
-interface BottomNavProps {
-	active: string
-	onChange: (id: string) => void
-}
+export default function BottomNav() {
+	const navigate = useNavigate()
+	const location = useLocation()
 
-export default function BottomNav({ active, onChange }: BottomNavProps) {
 	const accent = useThemeStore(state => state.accent)
 
 	return (
@@ -43,12 +42,15 @@ export default function BottomNav({ active, onChange }: BottomNavProps) {
 			<nav className="flex items-center justify-around rounded-3xl bg-[#1B0618] px-4 py-3 shadow-2xl">
 				{items.map(item => {
 					const Icon = item.icon
-					const isActive = active === item.id
+					const isActive =
+						item.id === 'home'
+							? location.pathname === '/'
+							: location.pathname === `/${item.id}`
 
 					return (
 						<button
 							key={item.id}
-							onClick={() => onChange(item.id)}
+							onClick={() => navigate(item.id === 'home' ? '/' : `/${item.id}`)}
 							className="flex flex-col items-center gap-1"
 						>
 							<Icon
