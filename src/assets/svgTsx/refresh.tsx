@@ -18,7 +18,7 @@ export default function RefreshSvg({ color }: ISvgProps) {
 			/>
 			<path
 				d="M20.0658 11C20.0658 16.06 15.9592 20.1667 10.8992 20.1667C5.83917 20.1667 2.75 15.07 2.75 15.07M2.75 19.6533V15.07H6.89333"
-				stroke={color}
+				stroke="#fff"
 				stroke-width="1.5"
 				stroke-linecap="round"
 				stroke-linejoin="round"

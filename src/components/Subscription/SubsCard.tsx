@@ -1,24 +1,8 @@
-import { useThemeStore } from '../../store/useThemeStore'
-
 export default function SubsCard() {
-	const accent = useThemeStore(state => state.accent)
-
 	return (
-		<div
-			style={{
-				borderColor: accent
-			}}
-			className="max-w-[354px] mx-auto border rounded-2xl px-2 pt-2 pb-4"
-		>
+		<div className="max-w-[354px] border-accent mx-auto border rounded-2xl px-2 pt-2 pb-4">
 			<div className="flex justify-between items-center mb-2">
-				<p
-					style={{
-						color: accent
-					}}
-					className="font-manrope font-bold text-xl"
-				>
-					Посуточный
-				</p>
+				<p className="font-manrope text-accent font-bold text-xl">Посуточный</p>
 				<span className="text-xs font-manrope text-green-300">Активная</span>
 			</div>
 
@@ -42,12 +26,7 @@ export default function SubsCard() {
 			</div>
 
 			<div>
-				<button
-					style={{
-						borderColor: accent
-					}}
-					className="block mx-auto text-sm font-manrope font-medium px-4 py-3 text-white border rounded-3xl"
-				>
+				<button className="block mx-auto border-accent text-sm font-manrope font-medium px-4 py-3 text-white border rounded-3xl">
 					Управление подпиской
 				</button>
 			</div>

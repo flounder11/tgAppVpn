@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { useThemeStore } from '../../store/useThemeStore'
 
 export default function SubsHeader() {
-	const accent = useThemeStore(state => state.accent)
 	const naviagte = useNavigate()
 
 	return (
@@ -12,8 +10,7 @@ export default function SubsHeader() {
 			</span>
 
 			<button
-				style={{ borderColor: accent }}
-				className="border rounded-2xl text-sm text-white font-manrope py-2 px-3.5"
+				className="border rounded-2xl border-accent text-sm text-white font-manrope py-2 px-3.5"
 				onClick={() => naviagte('/sub/new')}
 			>
 				+ Новый тариф

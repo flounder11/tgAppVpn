@@ -1,13 +1,15 @@
 import createGlobe from 'cobe'
 import { useEffect, useRef } from 'react'
+import { useThemeStore } from '../../store/useThemeStore'
 
-type GlobeProps = {
-	color: string
-	glowColor: string
-}
-
-export default function Globe({ glowColor, color }: GlobeProps) {
+export default function Globe() {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
+	const globeRef = useRef<ReturnType<typeof createGlobe> | null>(null)
+	const frameIdRef = useRef<number | null>(null)
+	const aliveRef = useRef(true)
+
+	const accent = useThemeStore(state => state.accent)
+	const bg = useThemeStore(state => state.bg)
 
 	function hexToRgb(hex: string): [number, number, number] {
 		const value = hex.replace('#', '')
@@ -19,10 +21,12 @@ export default function Globe({ glowColor, color }: GlobeProps) {
 		return [r, g, b]
 	}
 
-	const globeRef = useRef<ReturnType<typeof createGlobe> | null>(null)
-
 	useEffect(() => {
-		globeRef.current = createGlobe(canvasRef.current!, {
+		if (!canvasRef.current) return
+
+		aliveRef.current = true
+
+		globeRef.current = createGlobe(canvasRef.current, {
 			devicePixelRatio: 2,
 			width: 600 * 2,
 			height: 600 * 2,
@@ -30,11 +34,11 @@ export default function Globe({ glowColor, color }: GlobeProps) {
 			theta: 0.2,
 			dark: 1,
 			diffuse: 1.2,
-			mapSamples: 50000,
+			mapSamples: 8000,
 			mapBrightness: 24,
-			baseColor: hexToRgb(color),
+			baseColor: hexToRgb(bg),
 			markerColor: [0.2, 0.4, 1],
-			glowColor: hexToRgb(glowColor),
+			glowColor: hexToRgb(accent),
 			arcColor: [0.3, 0.5, 1],
 			arcWidth: 0.5,
 			arcHeight: 0.3
@@ -42,7 +46,6 @@ export default function Globe({ glowColor, color }: GlobeProps) {
 
 		// Animate the globe
 		let phi = 0
-		let frameId: number
 
 		function animate() {
 			phi += 0.005
@@ -50,23 +53,30 @@ export default function Globe({ glowColor, color }: GlobeProps) {
 			globeRef.current?.update({
 				phi
 			})
-			frameId = requestAnimationFrame(animate)
+			frameIdRef.current = requestAnimationFrame(animate)
 		}
 		animate()
 
 		return () => {
-			cancelAnimationFrame(frameId)
+			aliveRef.current = false
+
+			if (frameIdRef.current) {
+				cancelAnimationFrame(frameIdRef.current)
+			}
+
 			globeRef.current?.destroy()
 			globeRef.current = null
 		}
 	}, [])
 
 	useEffect(() => {
-		globeRef.current?.update({
-			baseColor: hexToRgb(color),
-			glowColor: hexToRgb(glowColor)
+		if (!globeRef.current) return
+
+		globeRef.current.update({
+			baseColor: hexToRgb(bg),
+			glowColor: hexToRgb(accent)
 		})
-	}, [color, glowColor])
+	}, [bg, accent])
 
 	return (
 		<canvas

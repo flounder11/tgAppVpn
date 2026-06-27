@@ -13,9 +13,6 @@
 }
 
 :root {
-	--bg-premium: #0d010c;
-	--bg-start: #060019;
-	--bg-days: #050212;
 	--background: oklch(1 0 0);
 	--foreground: oklch(0.145 0 0);
 	--card: oklch(1 0 0);
