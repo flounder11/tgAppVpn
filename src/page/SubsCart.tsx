@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PeriodCard from '../components/Subscription/NewSubscription/PeriodCard'
@@ -65,11 +66,36 @@ export default function SubsCart() {
 							<span>{currentPeriod.price} ₽</span>
 						</div>
 
-						{currentPeriod.discount && (
-							<span className="text-accent text-xs font-manrope w-full py-1.5 text-center bg-[#FF4BED]/10 border border-[#FF4BED]/50 rounded-2xl">
-								Скидка применена -{currentPeriod.discount}%
-							</span>
-						)}
+						<AnimatePresence>
+							{currentPeriod.discount && (
+								<motion.div
+									initial={{
+										opacity: 0,
+										height: 0,
+										y: -10
+									}}
+									animate={{
+										opacity: 1,
+										height: 'auto',
+										y: 0
+									}}
+									exit={{
+										opacity: 0,
+										height: 0,
+										y: -10
+									}}
+									transition={{
+										duration: 0.25,
+										ease: 'easeOut'
+									}}
+									className="overflow-hidden w-full"
+								>
+									<span className="block text-accent text-xs font-manrope w-full py-1.5 text-center bg-[#FF4BED]/10 border border-[#FF4BED]/50 rounded-2xl">
+										Скидка применена -{currentPeriod.discount}%
+									</span>
+								</motion.div>
+							)}
+						</AnimatePresence>
 
 						<hr className="bg-accent/50 border-0 h-[2px]" />
 
