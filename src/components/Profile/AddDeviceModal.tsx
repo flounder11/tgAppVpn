@@ -113,7 +113,7 @@ export default function AddDeviceModal({ onClose }: IAddDeviceModal) {
 						className="flex-1 flex items-center justify-center gap-x-1.5 border border-accent bg-accent/10 text-accent text-sm py-3 rounded-3xl text-center"
 					>
 						<div className="flex items-center gap-x-2">
-							<ExportImg color="var(--accent)" />
+							<ExportImg />
 							<span> App Store (RU)</span>
 						</div>
 					</a>
@@ -124,7 +124,7 @@ export default function AddDeviceModal({ onClose }: IAddDeviceModal) {
 						className="flex-1 flex items-center justify-center gap-x-1.5 border border-accent bg-accent/10 text-accent text-sm py-3 rounded-3xl text-center"
 					>
 						<div className="flex items-center gap-x-2">
-							<ExportImg color="var(--accent)" />
+							<ExportImg />
 							<span> App Store (Global)</span>
 						</div>
 					</a>

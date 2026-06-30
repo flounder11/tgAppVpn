@@ -43,7 +43,7 @@ export default function ProfilePage() {
 	return (
 		<MainLayout>
 			<div className="bg-background">
-				<p className="font-tektur font-bold text-white text-2xl my-6">
+				<p className="font-tektur font-bold text-white text-2xl mt-1 mb-6">
 					Профиль
 				</p>
 

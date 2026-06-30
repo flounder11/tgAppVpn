@@ -46,7 +46,7 @@ export default function DeviceSvg({ color }: ISvgProps) {
 			/>
 			<path
 				d="M15.8074 16.7292H15.8157"
-				stroke="#CA4EAB"
+				stroke={color}
 				stroke-width="1.5"
 				stroke-linecap="round"
 				stroke-linejoin="round"

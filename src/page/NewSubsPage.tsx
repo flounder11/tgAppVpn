@@ -6,7 +6,7 @@ import MainLayout from '../layouts/MainLayout'
 export default function NewSubsPage() {
 	return (
 		<MainLayout>
-			<div className="pt-12 mb-7">
+			<div className="pt-8 mb-7">
 				<ArrowBack navigateProps="sub" />
 			</div>
 			<div className="flex justify-between items-center mb-6">

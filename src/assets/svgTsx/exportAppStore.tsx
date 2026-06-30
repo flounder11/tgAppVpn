@@ -1,6 +1,4 @@
-import type { ISvgProps } from '../../types/svgProps'
-
-export default function ExportImg({ color }: ISvgProps) {
+export default function ExportImg() {
 	return (
 		<svg
 			width="15"
@@ -11,21 +9,21 @@ export default function ExportImg({ color }: ISvgProps) {
 		>
 			<path
 				d="M8.125 6.875L13.25 1.75"
-				stroke={color}
+				stroke="var(--accent)"
 				stroke-width="1.5"
 				stroke-linecap="round"
 				stroke-linejoin="round"
 			/>
 			<path
 				d="M13.75 4.25V1.25H10.75"
-				stroke={color}
+				stroke="var(--accent)"
 				stroke-width="1.5"
 				stroke-linecap="round"
 				stroke-linejoin="round"
 			/>
 			<path
 				d="M6.875 1.25H5.625C2.5 1.25 1.25 2.5 1.25 5.625V9.375C1.25 12.5 2.5 13.75 5.625 13.75H9.375C12.5 13.75 13.75 12.5 13.75 9.375V8.125"
-				stroke={color}
+				stroke="var(--accent)"
 				stroke-width="1.5"
 				stroke-linecap="round"
 				stroke-linejoin="round"

@@ -31,7 +31,7 @@ export default function SubsCart() {
 	return (
 		<MainLayout>
 			<div className="bg-background">
-				<div className="flex justify-between  pt-10 mb-6">
+				<div className="flex justify-between pt-6 mb-6">
 					<ArrowBack navigateProps="sub/new" />
 
 					<Balance />

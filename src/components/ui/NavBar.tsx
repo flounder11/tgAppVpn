@@ -22,7 +22,7 @@ const items: NavItem[] = [
 		icon: SubscriptionSvg
 	},
 	{
-		id: 'bonus',
+		id: 'referral',
 		label: 'Бонусы',
 		icon: BonusSvg
 	},
@@ -38,8 +38,8 @@ export default function BottomNav() {
 	const location = useLocation()
 
 	return (
-		<div className="fixed bottom-4 left-1/2 z-50 w-[360px] -translate-x-1/2">
-			<nav className="flex items-center justify-around rounded-3xl bg-[#1B0618] px-4 py-3 shadow-2xl">
+		<div className="fixed bottom-4 left-1/2 z-50 w-[360px] -translate-x-1/2 ">
+			<nav className="flex items-center justify-around rounded-3xl bg-white/[0.02] backdrop-blur-xs shadow-[0_8px_32px_rgba(0,0,0,.35)] px-4 py-3 ">
 				{items.map(item => {
 					const Icon = item.icon
 					const isActive =

@@ -14,8 +14,8 @@ export default function PaymentMethod({ open, onOpenChange }: IPaymentMethod) {
 			open={open}
 			onOpenChange={onOpenChange}
 		>
-			<DrawerContent className="bg-[#170115] border-[#170115]">
-				<div className="w-full max-w-svh bg-[#170115]">
+			<DrawerContent className="bg-white/[0.01] backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,.35)] border-white/[0.02]">
+				<div className="w-full max-w-svh">
 					<div className="max-w-[354px] mx-auto">
 						<div className="flex justify-between items-center mt-2">
 							<p className="text-2xl text-white font-manrope font-bold">

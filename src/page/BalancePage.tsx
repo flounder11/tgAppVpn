@@ -13,7 +13,7 @@ export default function BalancePage() {
 	return (
 		<MainLayout>
 			<div className=" bg-background">
-				<div className="flex justify-between  pt-10 mb-7">
+				<div className="flex justify-between pt-6 mb-7">
 					<ArrowBack navigateProps="sub/cart" />
 
 					<Balance />

@@ -1,0 +1,41 @@
+interface ILevelStep {
+	currentLevel: number
+	levelDiscounts: number[]
+}
+
+export default function LevelStep({
+	currentLevel,
+	levelDiscounts
+}: ILevelStep) {
+	return (
+		<div className="relative flex justify-between items-start">
+			<div className="absolute top-[18px] left-0 right-0 h-[2px] bg-white/20" />
+
+			{levelDiscounts.map((discount, index) => {
+				const level = index + 1
+				const isActive = level === currentLevel
+				return (
+					<div
+						key={level}
+						className="relative z-10 flex flex-col items-center gap-y-1"
+					>
+						<div
+							className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300 ${
+								isActive
+									? 'bg-accent text-black border-0'
+									: 'bg-background border border-white/20 text-white/40'
+							}`}
+						>
+							{level}
+						</div>
+						<span
+							className={`text-[10px] ${isActive ? 'text-accent' : 'text-white/40'}`}
+						>
+							{discount}%
+						</span>
+					</div>
+				)
+			})}
+		</div>
+	)
+}

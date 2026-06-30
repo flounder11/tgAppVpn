@@ -15,7 +15,7 @@ export default function NewSubsCard({ color, bgColor }: INewSubsCardProps) {
 				borderColor: color,
 				backgroundColor: bgColor
 			}}
-			className="max-w-[354px] border rounded-2xl w-full mx-auto p-4 flex flex-col gap-y-2"
+			className="border rounded-2xl w-full p-4 flex flex-col gap-y-2"
 		>
 			<SubsCardInfo color={color} />
 

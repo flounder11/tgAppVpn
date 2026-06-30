@@ -4,7 +4,7 @@ export default function SubsHeader() {
 	const naviagte = useNavigate()
 
 	return (
-		<header className="flex justify-between max-w-[354px] pt-4 h-16 mb-6 mx-auto items-center">
+		<header className="flex justify-between pt-4 h-16 mb-6 items-center">
 			<span className="font-tektur font-bold text-2xl text-white">
 				Мои тарифы
 			</span>
