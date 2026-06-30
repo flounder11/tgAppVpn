@@ -6,10 +6,10 @@ import MainLayout from '../layouts/MainLayout'
 export default function NewSubsPage() {
 	return (
 		<MainLayout>
-			<div className="pt-12 mb-7 ml-6">
+			<div className="pt-12 mb-7">
 				<ArrowBack navigateProps="sub" />
 			</div>
-			<div className="flex max-w-[354px] justify-between items-center mx-auto mb-6">
+			<div className="flex justify-between items-center mb-6">
 				<p className="text-white font-tektur font-bold text-2xl">Новый тариф</p>
 
 				<Balance />
@@ -18,7 +18,7 @@ export default function NewSubsPage() {
 			<div className="flex flex-col gap-y-4">
 				<NewSubsCard
 					color="#CB4EA8"
-					bgColor="#060018/70"
+					bgColor="#060018"
 				/>
 				<NewSubsCard
 					color="#E3A025"

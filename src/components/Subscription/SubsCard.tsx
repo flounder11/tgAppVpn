@@ -1,6 +1,6 @@
 export default function SubsCard() {
 	return (
-		<div className="max-w-[354px] border-accent mx-auto border rounded-2xl px-2 pt-2 pb-4">
+		<div className="max-w-[354px] border-accent bg-background mx-auto border rounded-2xl px-2 pt-2 pb-4">
 			<div className="flex justify-between items-center mb-2">
 				<p className="font-manrope text-accent font-bold text-xl">Посуточный</p>
 				<span className="text-xs font-manrope text-green-300">Активная</span>

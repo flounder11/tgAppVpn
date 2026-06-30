@@ -1,4 +1,4 @@
-import Globe from '../ui/globe'
+import GlobeImg from '../../assets/freepik--World--inject-2(1).svg'
 
 type Slide = {
 	id: number
@@ -11,8 +11,11 @@ type SliderMainProps = {
 
 export default function SliderMain({ slide }: SliderMainProps) {
 	return (
-		<div className="relative w-[400px] h-[400px] mx-auto">
-			<Globe />
+		<div className="relative w-[336px] h-[336px] mx-auto">
+			<img
+				src={GlobeImg}
+				alt=""
+			/>
 
 			<div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
 				<h2 className="text-mozilla-headline text-accent text-9xl leading-[0.8] font-semibold ">

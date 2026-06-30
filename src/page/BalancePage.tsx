@@ -12,7 +12,7 @@ export default function BalancePage() {
 
 	return (
 		<MainLayout>
-			<div className="max-w-[354px] mx-auto">
+			<div className=" bg-background">
 				<div className="flex justify-between  pt-10 mb-7">
 					<ArrowBack navigateProps="sub/cart" />
 
@@ -52,7 +52,7 @@ export default function BalancePage() {
 						type="number"
 					/>
 
-					<span className="text-white/30 font-medium">
+					<span className="text-white/30 font-medium text-sm">
 						Минимум 150 ₽, максимум 50 000 ₽
 					</span>
 

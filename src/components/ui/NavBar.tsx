@@ -1,5 +1,8 @@
-import { BadgeDollarSign, Bell, Home, User } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import BonusSvg from '../../assets/svgTsx/bonus'
+import HomeSvg from '../../assets/svgTsx/home'
+import ProfileSvg from '../../assets/svgTsx/profile'
+import SubscriptionSvg from '../../assets/svgTsx/subscription'
 
 type NavItem = {
 	id: string
@@ -11,22 +14,22 @@ const items: NavItem[] = [
 	{
 		id: 'home',
 		label: 'Главная',
-		icon: Home
+		icon: HomeSvg
 	},
 	{
 		id: 'sub',
 		label: 'Подписки',
-		icon: Bell
+		icon: SubscriptionSvg
 	},
 	{
 		id: 'bonus',
 		label: 'Бонусы',
-		icon: BadgeDollarSign
+		icon: BonusSvg
 	},
 	{
 		id: 'profile',
 		label: 'Профиль',
-		icon: User
+		icon: ProfileSvg
 	}
 ]
 
@@ -51,8 +54,8 @@ export default function BottomNav() {
 							className="flex flex-col items-center gap-1"
 						>
 							<Icon
-								size={26}
-								className={isActive ? 'text-accent' : 'text-white'}
+								size={30}
+								color={isActive ? 'var(--accent)' : '#fff'}
 							/>
 
 							<span

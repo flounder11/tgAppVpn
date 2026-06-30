@@ -41,10 +41,7 @@ export default function HomeMain() {
 
 	return (
 		<div>
-			<p
-				style={{ WebkitTextStroke: `2px ${accent}` }}
-				className="text-6xl text-transparent text-center font-bold font-tektur"
-			>
+			<p className="text-6xl text-transparent text-center [-webkit-text-stroke:2px_var(--accent)] font-bold font-tektur">
 				{activeSlide.label}
 			</p>
 
@@ -78,10 +75,7 @@ export default function HomeMain() {
 				))}
 			</div>
 
-			<button
-				style={{ color: accent, borderColor: accent }}
-				className="text-manrope text-xl font-semibold border rounded-4xl py-4 px-18 flex mx-auto mb-4"
-			>
+			<button className="text-manrope text-xl font-semibold bg-background text-accent border-accent border rounded-4xl py-4 px-18 flex mx-auto mb-4">
 				{activeSlide.days === 0 ? 'Приобрести тариф' : 'Продлить тариф'}
 			</button>
 

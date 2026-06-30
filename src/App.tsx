@@ -1,41 +1,64 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Particles } from './components/ui/particles'
 import ThemeProvider from './layouts/ThemeProvider'
 import BalancePage from './page/BalancePage'
 import HomePage from './page/HomePage'
 import NewSubsPage from './page/NewSubsPage'
+import ProfilePage from './page/ProfilePage'
+import PublicOfferPage from './page/PublicOfferPage'
 import SubsCart from './page/SubsCart'
 import SubscriptionPage from './page/SubscriptionPage'
+import TransactionPage from './page/TransactionsPage'
 
 function App() {
 	return (
-		<ThemeProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route
-						path="/"
-						element={<HomePage />}
-					/>
-					<Route
-						path="/sub"
-						element={<SubscriptionPage />}
-					/>
-					<Route
-						path="/sub/new"
-						element={<NewSubsPage />}
-					/>
+		<BrowserRouter>
+			<ThemeProvider>
+				<Particles className="fixed inset-0 w-full h-full" />
 
-					<Route
-						path="/sub/cart"
-						element={<SubsCart />}
-					/>
+				<div className="relative z-10 min-h-dvh max-w-[354px] mx-auto">
+					<Routes>
+						<Route
+							path="/"
+							element={<HomePage />}
+						/>
+						<Route
+							path="/sub"
+							element={<SubscriptionPage />}
+						/>
+						<Route
+							path="/sub/new"
+							element={<NewSubsPage />}
+						/>
 
-					<Route
-						path="/balance"
-						element={<BalancePage />}
-					/>
-				</Routes>
-			</BrowserRouter>
-		</ThemeProvider>
+						<Route
+							path="/sub/cart"
+							element={<SubsCart />}
+						/>
+
+						<Route
+							path="/balance"
+							element={<BalancePage />}
+						/>
+
+						<Route
+							path="/profile"
+							element={<ProfilePage />}
+						/>
+
+						<Route
+							path="profile/transaction"
+							element={<TransactionPage />}
+						/>
+
+						<Route
+							path="profile/offer"
+							element={<PublicOfferPage />}
+						/>
+					</Routes>
+				</div>
+			</ThemeProvider>
+		</BrowserRouter>
 	)
 }
 

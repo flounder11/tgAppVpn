@@ -31,7 +31,7 @@ export default function CardIdFriend({ value }: ICardIdFriend) {
 					className="overflow-hidden"
 				>
 					<div className="border border-accent flex flex-col rounded-2xl mt-6 p-4 gap-y-3 text-white font-manrope">
-						<span className="font-medium">Введите ID получателя</span>
+						<span className="font-medium text-sm">Введите ID получателя</span>
 
 						<input
 							type="text"
@@ -39,7 +39,7 @@ export default function CardIdFriend({ value }: ICardIdFriend) {
 							className="border border-accent rounded-4xl py-4 pl-4 outline-0  font-medium"
 						/>
 
-						<span className="text-white/30 font-medium">
+						<span className="text-white/30 font-medium text-sm">
 							ID можно посмотреть в профиле Telegram получателя
 						</span>
 					</div>
