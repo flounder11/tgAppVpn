@@ -27,7 +27,7 @@ export default function HomeMain() {
 
 			<GlobeSlider />
 
-			<button className="font-manrope text-xl leading-7 font-semibold bg-glass/10 text-accent border border-accent rounded-full [box-shadow:0_0_10px_0_color-mix(in_oklab,var(--accent)_15%,transparent)] py-4 px-18 flex mx-auto mt-6 mb-4">
+			<button className="font-manrope text-xl leading-7 font-semibold bg-glass/10 text-accent border border-accent rounded-full [box-shadow:0_0_10px_0_color-mix(in_oklab,var(--accent)_15%,transparent)] py-3 px-18 flex mx-auto mt-6 mb-4">
 				{activeSlide.days === 0 ? 'Приобрести тариф' : 'Продлить тариф'}
 			</button>
 
