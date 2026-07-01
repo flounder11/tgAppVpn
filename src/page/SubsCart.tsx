@@ -5,31 +5,26 @@ import PeriodCard from '../components/Subscription/NewSubscription/PeriodCard'
 import SubsCardInfo from '../components/Subscription/NewSubscription/SubsCardInfo'
 import ArrowBack from '../components/ui/arrowBack'
 import Balance from '../components/ui/balance'
+import RangeSlider from '../components/ui/RangeSlider'
+import EarthSvg from '../assets/svgTsx/earth'
+import { getTariff } from '../data/tariffs'
+import { plural } from '../lib/utils'
 import MainLayout from '../layouts/MainLayout'
 import { useThemeStore } from '../store/useThemeStore'
 import { hexToRgba } from '../utils/color'
 
 export default function SubsCart() {
-	const periods = [
-		{
-			variant: 'gold' as const,
-			months: 1,
-			price: '350.00',
-			pricePerMonth: '350.00'
-		},
-		{
-			variant: 'pink' as const,
-			months: 3,
-			price: '945.00',
-			pricePerMonth: '315.00',
-			discount: 10
-		}
-	]
+	const navigate = useNavigate()
+	const cartTariffId = useThemeStore(state => state.cartTariffId)
+	const cartAccent = useThemeStore(state => state.cartAccent)
+
+	const tariff = getTariff(cartTariffId)
+	const periods = tariff.periods
 
 	const [selected, setSelected] = useState(0)
+	const [gb, setGb] = useState(30)
+	const [devices, setDevices] = useState(67)
 	const currentPeriod = periods[selected]
-	const navigate = useNavigate()
-	const cartAccent = useThemeStore(state => state.cartAccent)
 
 	return (
 		<MainLayout>
@@ -44,7 +39,57 @@ export default function SubsCart() {
 					style={{ borderColor: hexToRgba(cartAccent, 1) }}
 					className="p-4 border rounded-2xl"
 				>
-					<SubsCardInfo color={cartAccent} />
+					<SubsCardInfo
+						color={cartAccent}
+						name={tariff.name}
+						description={tariff.description}
+						traffic={tariff.traffic}
+						devices={tariff.devices}
+						reset={tariff.reset}
+					/>
+
+					{tariff.configurable && (
+						<div className="mt-4 flex flex-col gap-y-4">
+							<p className="text-sm font-manrope text-white">
+								Выберите характеристики
+							</p>
+
+							<RangeSlider
+								label="Объём характеристики"
+								value={gb}
+								min={1}
+								max={999}
+								minLabel="1ГБ"
+								maxLabel="999ГБ"
+								valueLabel={`${gb} ГБ`}
+								color={cartAccent}
+								onChange={setGb}
+							/>
+
+							<RangeSlider
+								label="Количество устройств"
+								value={devices}
+								min={1}
+								max={99}
+								minLabel="1Уст"
+								maxLabel="99Уст"
+								valueLabel={`${devices} Устройств`}
+								color={cartAccent}
+								onChange={setDevices}
+							/>
+
+							<button
+								style={{
+									borderColor: hexToRgba(cartAccent, 0.5),
+									color: cartAccent
+								}}
+								className="flex items-center justify-center gap-x-2 w-full border rounded-2xl py-2.5 font-manrope text-sm font-medium"
+							>
+								<EarthSvg />
+								Выбрать страну
+							</button>
+						</div>
+					)}
 
 					<div>
 						<p className="text-sm font-manrope text-white mb-2 mt-4">
@@ -71,7 +116,11 @@ export default function SubsCart() {
 						<div className="flex justify-between text-xs text-white items-center">
 							<p>
 								Выбранный период: {currentPeriod.months}{' '}
-								{currentPeriod.months === 1 ? 'месяц' : 'месяца'}
+								{plural(currentPeriod.months, [
+									'месяц',
+									'месяца',
+									'месяцев'
+								])}
 							</p>
 							<span>{currentPeriod.price} ₽</span>
 						</div>

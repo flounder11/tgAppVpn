@@ -1,15 +1,22 @@
+import type { ReactNode } from 'react'
+
 interface ICurrentMethod {
 	title: string
-	img: string
+	img?: string
+	icon?: ReactNode
 }
 
-export default function CurrentMethod({ title, img }: ICurrentMethod) {
+export default function CurrentMethod({ title, img, icon }: ICurrentMethod) {
 	return (
-		<div className="bg-[#090108] w-full py-1 pl-1 flex gap-x-1 items-center rounded-lg">
-			<img
-				src={img}
-				alt=""
-			/>
+		<div className="bg-[#090108] w-full py-2 px-2 flex gap-x-2 items-center rounded-lg">
+			<span className="flex items-center justify-center size-6 shrink-0">
+				{icon ?? (
+					<img
+						src={img}
+						alt=""
+					/>
+				)}
+			</span>
 
 			<span>{title}</span>
 		</div>

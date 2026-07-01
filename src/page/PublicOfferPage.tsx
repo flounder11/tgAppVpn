@@ -133,9 +133,9 @@ export default function PublicOfferPage() {
 	return (
 		<MainLayout>
 			<div className="mt-6 font-manrope">
-				<ArrowBack navigateProps="/profile" />
+				<ArrowBack navigateProps="profile" />
 
-				<p className="text-white text-2xl font-tektur font-bold my-7">
+				<p className="text-white text-2xl font-manrope font-bold my-7">
 					Публичная оферта
 				</p>
 

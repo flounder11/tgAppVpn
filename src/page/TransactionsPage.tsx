@@ -8,14 +8,14 @@ const mockHistory = [
 	{
 		id: '1',
 		title: 'Ежедневное списание',
-		subtitle: 'Ежедневное списание тариф...',
+		subtitle: 'Ежедневное списание: мин. 15₽',
 		date: '29 апреля 2026 г. в 13:00',
 		amount: -15
 	},
 	{
 		id: '2',
 		title: 'Ежедневное списание',
-		subtitle: 'Ежедневное списание тариф...',
+		subtitle: 'Ежедневное списание: мин. 15₽',
 		date: '28 апреля 2026 г. в 13:00',
 		amount: -15
 	},
@@ -45,7 +45,7 @@ export default function TransactionPage() {
 	return (
 		<MainLayout>
 			<div className="mt-6 font-manrope">
-				<ArrowBack navigateProps="/profile" />
+				<ArrowBack navigateProps="profile" />
 
 				<div>
 					<p className="text-white text-2xl font-tektur font-bold my-7">
@@ -57,16 +57,16 @@ export default function TransactionPage() {
 							<RadioTabs
 								value={value}
 								onValueChange={setValue}
-								containerClassName="bg-[#0D010C] border-0 p-1.5"
+								containerClassName="bg-[#0D010C] dark:bg-[#0D010C] border-0 p-1.5"
 							>
 								<RadioTabsItem
-									className="data-[state=checked]:bg-accent/80 data-[state=checked]:text-white data-[state=checked]:border-0 text-sm data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
+									className="data-[state=checked]:bg-accent! data-[state=checked]:text-white data-[state=checked]:border-0 text-sm data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
 									value="history"
 								>
 									История ({mockHistory.length})
 								</RadioTabsItem>
 								<RadioTabsItem
-									className="data-[state=checked]:bg-accent/80 data-[state=checked]:text-white data-[state=checked]:border-0 text-sm data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
+									className="data-[state=checked]:bg-accent! data-[state=checked]:text-white data-[state=checked]:border-0 text-sm data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
 									value="pending"
 								>
 									В обработке ({mockPending.length})

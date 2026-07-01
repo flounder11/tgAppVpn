@@ -7,8 +7,8 @@ interface IDeviceModal {
 }
 
 const mockDevices = [
-	{ id: '1', name: 'iPhone 15 Pro', lastActive: 'Сейчас активно', traffic: 12 },
-	{ id: '2', name: 'Windows PC', lastActive: '2 дня назад', traffic: 230 }
+	{ id: '1', name: 'iPhone 15 Pro', connectedAt: '11.03.2026', traffic: 12 },
+	{ id: '2', name: 'Windows PC', connectedAt: '09.02.2026', traffic: 230 }
 ]
 
 export default function DeviceModal({ onClose }: IDeviceModal) {
@@ -39,7 +39,7 @@ export default function DeviceModal({ onClose }: IDeviceModal) {
 						>
 							<p className="text-white">{device.name}</p>
 							<p className="text-white/40 text-xs">
-								Дата подключения: {device.lastActive}
+								Дата подключения: {device.connectedAt}
 							</p>
 							<p className="text-white/40 text-xs">
 								Использовано данных: {device.traffic} ГБ
@@ -47,7 +47,7 @@ export default function DeviceModal({ onClose }: IDeviceModal) {
 
 							<button
 								onClick={handleUnlink}
-								className="text-red-400 text-xs border border-red-400 bg-red-400/10 rounded-2xl py-2.5 px-4"
+								className="text-[#EB5454] text-xs border border-[#EB5454] bg-[#EB5454]/10 rounded-2xl py-2.5 px-4"
 							>
 								Отвязать устройство
 							</button>

@@ -10,7 +10,7 @@ export default function SubsHeader() {
 			</span>
 
 			<button
-				className="border rounded-2xl border-accent text-sm text-white font-manrope py-2 px-3.5"
+				className="border rounded-full bg-accent/10 border-accent text-sm text-white font-manrope py-2 px-3.5"
 				onClick={() => naviagte('/sub/new')}
 			>
 				+ Новый тариф

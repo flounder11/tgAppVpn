@@ -5,18 +5,23 @@ import EmailModal from './EmailModel'
 export default function ProfileMain() {
 	const [isEmailModalOpen, setEmailModalOpen] = useState(false)
 	const [email, setEmail] = useState('')
+	const name = 'Gadik'
 
 	return (
 		<div className="flex flex-col gap-y-4 bg-[#0D010CB2]/70 border border-accent/50 rounded-2xl px-4 pt-4 pb-6">
-			<div className="flex gap-x-1">
-				<div>
-					<img
-						src=""
-						alt=""
-					/>
+			<div className="flex gap-x-3 items-center">
+				<div className="size-[60px] shrink-0 rounded-full bg-accent flex items-center justify-center">
+					<span className="text-2xl font-bold text-[#0D010C] font-manrope">
+						{name.charAt(0)}
+					</span>
 				</div>
 				<div className="text-white font-manrope">
-					<p className="text-xl mb-1">Gadik</p>
+					<div className="flex items-center gap-x-2 mb-1">
+						<p className="text-xl">{name}</p>
+						<button aria-label="Изменить имя">
+							<EditPencilSvg />
+						</button>
+					</div>
 					<span className="text-xs text-white/40">@User231709</span>
 				</div>
 			</div>

@@ -1,3 +1,4 @@
+import { plural } from '../../../lib/utils'
 import { hexToRgba } from '../../../utils/color'
 
 type PeriodCardProps = {
@@ -46,7 +47,7 @@ export default function PeriodCard({
 			)}
 
 			<span className="font-semibold text-white">
-				{months} {months === 1 ? 'месяц' : 'месяца'}
+				{months} {plural(months, ['месяц', 'месяца', 'месяцев'])}
 			</span>
 			<span className="font-bold text-2xl">{price} ₽</span>
 			<span className="font-light text-xs text-white">

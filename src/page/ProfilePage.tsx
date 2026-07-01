@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import BookSvg from '../assets/svgTsx/book'
+import DeviceSvg from '../assets/svgTsx/device'
 import ReferralSvg from '../assets/svgTsx/referral'
+import SupportSvg from '../assets/svgTsx/support'
 import TransactionSvg from '../assets/svgTsx/transaction'
 import DeviceModal from '../components/Profile/DeviceModal'
 import MainProfileTabs from '../components/Profile/MainProfileTabs'
@@ -20,29 +23,35 @@ export default function ProfilePage() {
 			onClick: () => navigate('/profile/transaction')
 		},
 		{
-			id: 'bonuses',
-			title: 'Бонусы',
+			id: 'referral',
+			title: 'Реферальная программа',
 			img: ReferralSvg,
 			onClick: () => navigate('/referral')
 		},
 		{
 			id: 'device',
 			title: 'Мои устройства',
-			img: TransactionSvg,
+			img: DeviceSvg,
 			onClick: () => setDeviceModalOpen(true)
 		},
 		{
 			id: 'offer',
 			title: 'Публичная оферта',
-			img: ReferralSvg,
-			onClick: () => navigate('profile/offer')
+			img: BookSvg,
+			onClick: () => navigate('/profile/offer')
 		},
 		{
 			id: 'policy',
 			title: 'Политика конфиденциальности',
-			img: TransactionSvg
+			img: BookSvg,
+			onClick: () => navigate('/profile/offer')
 		},
-		{ id: 'support', title: 'Техническая поддержка', img: ReferralSvg }
+		{
+			id: 'support',
+			title: 'Техническая поддержка',
+			img: SupportSvg,
+			onClick: () => window.open('https://t.me/voxiproxy_support', '_blank')
+		}
 	]
 
 	return (

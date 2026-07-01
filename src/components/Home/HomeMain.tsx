@@ -33,14 +33,16 @@ export default function HomeMain() {
 					<EarthSvg />
 
 					<span className="text-white font-manrope text-sm">
-						350₽/месяц за устройство{' '}
+						{activeSlide.price}
 					</span>
 				</div>
 
 				<div className="flex items-center gap-x-2">
 					<ExportSvg color="var(--accent)" />
 
-					<span className="text-white font-manrope text-sm">134 ГБ</span>
+					<span className="text-white font-manrope text-sm">
+						{activeSlide.traffic}
+					</span>
 				</div>
 			</div>
 

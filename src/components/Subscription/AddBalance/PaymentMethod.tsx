@@ -1,5 +1,8 @@
 import CloseImg from '../../../assets/close-circle.svg'
 import WataImg from '../../../assets/wata.svg'
+import CardSvg from '../../../assets/svgTsx/card'
+import CryptoSvg from '../../../assets/svgTsx/crypto'
+import StarSvg from '../../../assets/svgTsx/star'
 import { Drawer, DrawerClose, DrawerContent } from '../../ui/drawer'
 import CurrentMethod from './CurrentMethod'
 
@@ -7,6 +10,13 @@ interface IPaymentMethod {
 	open: boolean
 	onOpenChange: (open: boolean) => void
 }
+
+const methods = [
+	{ title: 'Wata (СБП)', img: WataImg },
+	{ title: 'YooKassa (Карта)', icon: <CardSvg /> },
+	{ title: 'Оплата криптовалютой', icon: <CryptoSvg /> },
+	{ title: 'Оплата Telegram Stars', icon: <StarSvg /> }
+]
 
 export default function PaymentMethod({ open, onOpenChange }: IPaymentMethod) {
 	return (
@@ -32,25 +42,14 @@ export default function PaymentMethod({ open, onOpenChange }: IPaymentMethod) {
 						</div>
 
 						<div className="font-manrope mt-7 mb-14 text-white text-lg flex flex-col gap-y-2">
-							<CurrentMethod
-								title="Wata (СБП)"
-								img={WataImg}
-							/>
-
-							<CurrentMethod
-								title="Wata (СБП)"
-								img={WataImg}
-							/>
-
-							<CurrentMethod
-								title="Wata (СБП)"
-								img={WataImg}
-							/>
-
-							<CurrentMethod
-								title="Wata (СБП)"
-								img={WataImg}
-							/>
+							{methods.map(method => (
+								<CurrentMethod
+									key={method.title}
+									title={method.title}
+									img={method.img}
+									icon={method.icon}
+								/>
+							))}
 						</div>
 					</div>
 				</div>

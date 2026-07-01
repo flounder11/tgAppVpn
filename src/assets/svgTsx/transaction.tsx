@@ -14,17 +14,17 @@ export default function TransactionSvg() {
 			<path
 				d="M8.16669 8.1665L12.8334 8.1665"
 				stroke="var(--accent)"
-				stroke-linecap="round"
+				strokeLinecap="round"
 			/>
 			<path
 				d="M9.33331 12.8335H8.16665"
 				stroke="var(--accent)"
-				stroke-linecap="round"
+				strokeLinecap="round"
 			/>
 			<path
 				d="M8.16669 17.5L11.6667 17.5"
 				stroke="var(--accent)"
-				stroke-linecap="round"
+				strokeLinecap="round"
 			/>
 		</svg>
 	)

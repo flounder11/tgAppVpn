@@ -99,7 +99,7 @@ export default function EmailModal({
 							Привязать E-mail
 						</p>
 						<div className="flex flex-col gap-y-2">
-							<label className="text-white text-xs">E-main адрес</label>
+							<label className="text-white text-xs">E-mail адрес</label>
 							<input
 								type="email"
 								value={email}

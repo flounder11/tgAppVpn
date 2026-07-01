@@ -1,3 +1,4 @@
+import { tariffs } from '../data/tariffs'
 import NewSubsCard from '../components/Subscription/NewSubscription/NewSubsCard'
 import ArrowBack from '../components/ui/arrowBack'
 import Balance from '../components/ui/balance'
@@ -16,18 +17,12 @@ export default function NewSubsPage() {
 			</div>
 
 			<div className="flex flex-col gap-y-4">
-				<NewSubsCard
-					color="#CB4EA8"
-					bgColor="#060018"
-				/>
-				<NewSubsCard
-					color="#E3A025"
-					bgColor="#0D010C"
-				/>
-				<NewSubsCard
-					color="#9ADAEE"
-					bgColor="#010612"
-				/>
+				{tariffs.map(tariff => (
+					<NewSubsCard
+						key={tariff.id}
+						tariff={tariff}
+					/>
+				))}
 			</div>
 		</MainLayout>
 	)

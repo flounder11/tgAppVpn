@@ -26,16 +26,16 @@ export default function BalancePage() {
 				<RadioTabs
 					value={value}
 					onValueChange={setValue}
-					containerClassName="bg-[#0D010C] rounded-2xl border border-white/10 p-1.5"
+					containerClassName="bg-[#0D010C] dark:bg-[#0D010C] rounded-2xl border border-white/10 p-1.5"
 				>
 					<RadioTabsItem
-						className="data-[state=checked]:bg-accent/80 data-[state=checked]:text-white data-[state=checked]:border-0 text-lg data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
+						className="data-[state=checked]:bg-accent! data-[state=checked]:text-white data-[state=checked]:border-0 text-lg data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
 						value="me"
 					>
 						Себе
 					</RadioTabsItem>
 					<RadioTabsItem
-						className="data-[state=checked]:bg-accent/80 data-[state=checked]:text-white data-[state=checked]:border-0 text-lg data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
+						className="data-[state=checked]:bg-accent! data-[state=checked]:text-white data-[state=checked]:border-0 text-lg data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
 						value="friend"
 					>
 						Другому
@@ -48,8 +48,9 @@ export default function BalancePage() {
 					<p className="font-medium">Введите сумму</p>
 
 					<input
-						className="border border-accent rounded-2xl text-3xl text-white h-11 outline-0"
+						className="border border-accent rounded-2xl text-3xl text-white h-11 outline-0 text-center px-4"
 						type="number"
+						placeholder="0 ₽"
 					/>
 
 					<span className="text-white/30 font-medium text-sm">
@@ -73,7 +74,7 @@ export default function BalancePage() {
 
 					<button
 						onClick={() => setDrawerOpen(true)}
-						className="bg-accent/80 w-full py-3 font-semibold rounded-4xl text-lg"
+						className="bg-accent text-white w-full py-3 font-semibold rounded-4xl text-lg"
 					>
 						Пополнить
 					</button>

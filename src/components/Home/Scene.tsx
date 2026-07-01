@@ -18,10 +18,10 @@ export default function Scene({ activeSlide }: Props) {
 				near={0.1}
 				far={20}
 			/>
-			<ambientLight intensity={1.1} />
+			<ambientLight intensity={0.72} />
 			<directionalLight
 				position={[3, 2, 5]}
-				intensity={2.5}
+				intensity={0.35}
 			/>
 			<Earth activeSlide={activeSlide} />
 		</Canvas>

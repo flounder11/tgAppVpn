@@ -20,16 +20,16 @@ export default function LevelStep({
 						className="relative z-10 flex flex-col items-center gap-y-1"
 					>
 						<div
-							className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300 ${
+							className={`rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300 ${
 								isActive
-									? 'bg-accent text-black border-0'
-									: 'bg-background border border-white/20 text-white/40'
+									? 'w-9 h-9 bg-accent text-black border-0'
+									: 'w-[30px] h-[30px] bg-background border border-white/20 text-white/20'
 							}`}
 						>
 							{level}
 						</div>
 						<span
-							className={`text-[10px] ${isActive ? 'text-accent' : 'text-white/40'}`}
+							className={`text-[10px] ${isActive ? 'text-accent' : 'text-white/20'}`}
 						>
 							{discount}%
 						</span>

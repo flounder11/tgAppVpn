@@ -9,6 +9,10 @@ export default function ThemeProvider({ children }: Props) {
 	const { accent, bg } = useThemeStore()
 
 	useEffect(() => {
+		document.documentElement.classList.add('dark')
+	}, [])
+
+	useEffect(() => {
 		document.documentElement.style.setProperty('--accent', accent)
 		document.documentElement.style.setProperty('--background', bg)
 	}, [accent, bg])

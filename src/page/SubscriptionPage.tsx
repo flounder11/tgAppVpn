@@ -9,7 +9,7 @@ export default function SubscriptionPage() {
 			<main>
 				<SubsCard />
 
-				<button className="block mx-auto text-sm font-medium font-manrope text-gray-400 text-center underline mt-6">
+				<button className="block mx-auto text-sm font-medium font-manrope text-white/40 text-center underline mt-6">
 					Показать не активные
 				</button>
 			</main>

@@ -75,7 +75,7 @@ export default function LevelCircle({
 				dominantBaseline="middle"
 				fontSize={size * 0.34}
 				fontWeight="700"
-				fill="#fff"
+				fill={color}
 			>
 				{level}
 			</text>

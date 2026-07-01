@@ -103,10 +103,10 @@ export default function GlobeSlider() {
 					{slide.days}
 				</h2>
 				<p className="text-mozilla-headline text-accent text-2xl font-medium">
-					Осталось
+					ОСТАЛОСЬ
 				</p>
 				<p className="text-mozilla-headline text-accent text-2xl font-medium">
-					дней
+					ДНЕЙ
 				</p>
 			</div>
 
