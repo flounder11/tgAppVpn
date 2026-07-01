@@ -68,7 +68,6 @@ export default function Earth({ activeSlide }: Props) {
 			<meshBasicMaterial
 				map={textures[activeSlide]}
 				toneMapped={false}
-				color="#cfcfcf"
 			/>
 		</mesh>
 	)

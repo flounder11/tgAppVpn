@@ -1,9 +1,9 @@
 // src/components/Home/slidesData.ts
-import World1 from '../../assets/World 1.svg'
-import World2 from '../../assets/World 2.svg'
-import World3 from '../../assets/World 3.svg'
-import World4 from '../../assets/World 4.svg'
-import World5 from '../../assets/World 5.svg'
+import World1 from '../../assets/globes-tex/premium.png'
+import World2 from '../../assets/globes-tex/start.png'
+import World3 from '../../assets/globes-tex/daily.png'
+import World4 from '../../assets/globes-tex/vps.png'
+import World5 from '../../assets/globes-tex/corp.png'
 
 export interface Slide {
 	id: number

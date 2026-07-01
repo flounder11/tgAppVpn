@@ -10,7 +10,7 @@ const GLOBE_ZOOM = 80
 
 export default function Scene({ activeSlide }: Props) {
 	return (
-		<Canvas>
+		<Canvas flat>
 			<OrthographicCamera
 				makeDefault
 				position={[0, 0, 5]}

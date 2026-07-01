@@ -13,9 +13,10 @@ export default function MainLayout({ children }: IProps) {
 				paddingTop: 'var(--tg-viewport-safe-area-inset-top, 0px)'
 			}}
 		>
-			<div className="pointer-events-none absolute -right-52 top-25 h-[300px] w-[300px] rounded-full bg-glow/15 blur-[220px] -translate-y-1/2" />
+			{/* Цветные шары-подсветки по углам (тон по теме + фиолетовый) */}
+			<div className="pointer-events-none fixed -top-28 -right-28 h-[300px] w-[300px] rounded-full bg-accent/20 blur-[120px] transition-colors duration-500" />
 
-			<div className="pointer-events-none absolute bottom-40 left-20 h-[300px] w-[300px] rounded-full bg-glow/15 blur-[160px]" />
+			<div className="pointer-events-none fixed -bottom-28 -left-28 h-[300px] w-[300px] rounded-full bg-glow/25 blur-[120px]" />
 
 			<div className="pt-5 pb-28">{children}</div>
 			<BottomNav />

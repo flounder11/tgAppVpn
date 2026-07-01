@@ -46,7 +46,7 @@ export default function HomeMain() {
 				</div>
 			</div>
 
-			<button className="glass-neutral flex gap-x-2 py-2 px-3 mx-auto rounded-2xl mb-3">
+			<button className="glass-neutral flex gap-x-2 py-2 px-4 mx-auto rounded-full mb-3">
 				<SettingSvg />
 
 				<span className="font-manrope font-semibold text-white">
