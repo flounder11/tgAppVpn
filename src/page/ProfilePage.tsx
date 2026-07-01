@@ -17,7 +17,7 @@ export default function ProfilePage() {
 			id: 'transactions',
 			title: 'Транзакции',
 			img: TransactionSvg,
-			onClick: () => navigate('transaction')
+			onClick: () => navigate('/profile/transaction')
 		},
 		{
 			id: 'bonuses',
@@ -35,7 +35,7 @@ export default function ProfilePage() {
 			id: 'offer',
 			title: 'Публичная оферта',
 			img: ReferralSvg,
-			onClick: () => navigate('offer')
+			onClick: () => navigate('profile/offer')
 		},
 		{
 			id: 'policy',

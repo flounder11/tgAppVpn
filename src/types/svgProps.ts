@@ -1,4 +1,4 @@
 export interface ISvgProps {
-	color: string
+	color?: string
 	size?: number
 }

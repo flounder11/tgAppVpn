@@ -1,3 +1,4 @@
+import type { ISvgProps } from '@/types/svgProps'
 import { useLocation, useNavigate } from 'react-router-dom'
 import BonusSvg from '../../assets/svgTsx/bonus'
 import HomeSvg from '../../assets/svgTsx/home'
@@ -7,7 +8,7 @@ import SubscriptionSvg from '../../assets/svgTsx/subscription'
 type NavItem = {
 	id: string
 	label: string
-	icon: React.ElementType
+	icon: React.ComponentType<ISvgProps>
 }
 
 const items: NavItem[] = [
@@ -38,7 +39,12 @@ export default function BottomNav() {
 	const location = useLocation()
 
 	return (
-		<div className="fixed bottom-4 left-1/2 z-50 w-[360px] -translate-x-1/2 ">
+		<div
+			className="fixed left-1/2 z-50 w-[360px] -translate-x-1/2"
+			style={{
+				bottom: 'calc(16px + var(--tg-viewport-safe-area-inset-bottom, 0px))'
+			}}
+		>
 			<nav className="flex items-center justify-around rounded-3xl bg-white/[0.02] backdrop-blur-xs shadow-[0_8px_32px_rgba(0,0,0,.35)] px-4 py-3 ">
 				{items.map(item => {
 					const Icon = item.icon

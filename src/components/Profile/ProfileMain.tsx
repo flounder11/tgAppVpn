@@ -32,7 +32,7 @@ export default function ProfileMain() {
 					<div className="flex gap-x-2">
 						<p>{email}</p>
 						<button onClick={() => setEmailModalOpen(true)}>
-							<EditPencilSvg color="var(--accent)" />
+							<EditPencilSvg />
 						</button>
 					</div>
 					{isEmailModalOpen && (

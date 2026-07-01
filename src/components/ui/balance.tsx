@@ -1,9 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import MoneySvg from '../../assets/svgTsx/money'
-import { useThemeStore } from '../../store/useThemeStore'
 
 export default function Balance() {
-	const accent = useThemeStore(state => state.accent)
 	const navigate = useNavigate()
 
 	return (
@@ -13,7 +11,7 @@ export default function Balance() {
 		>
 			<span className="text-white text-sm font-manrope">300 ₽</span>
 
-			<MoneySvg color={accent} />
+			<MoneySvg />
 		</button>
 	)
 }

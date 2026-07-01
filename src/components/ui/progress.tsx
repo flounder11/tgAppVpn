@@ -12,7 +12,7 @@ function Progress({
 
 	React.useEffect(() => {
 		const id = requestAnimationFrame(() => {
-			setAnimatedValue(value)
+			setAnimatedValue(value ?? 0)
 		})
 
 		return () => cancelAnimationFrame(id)

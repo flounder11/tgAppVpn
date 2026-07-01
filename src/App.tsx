@@ -49,17 +49,17 @@ function App() {
 							/>
 
 							<Route
-								path="profile/transaction"
+								path="/profile/transaction"
 								element={<TransactionPage />}
 							/>
 
 							<Route
-								path="profile/offer"
+								path="/profile/offer"
 								element={<PublicOfferPage />}
 							/>
 
 							<Route
-								path="referral"
+								path="/referral"
 								element={<ReferralPage />}
 							/>
 						</Routes>
