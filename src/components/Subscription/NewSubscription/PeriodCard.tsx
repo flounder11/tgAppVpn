@@ -1,5 +1,7 @@
+import { hexToRgba } from '../../../utils/color'
+
 type PeriodCardProps = {
-	variant: 'gold' | 'pink'
+	color: string
 	selected: boolean
 	months: number
 	price: string
@@ -8,36 +10,8 @@ type PeriodCardProps = {
 	onClick: () => void
 }
 
-const styles = {
-	gold: {
-		selected: {
-			bg: 'bg-[#E3A126]/20',
-			border: 'border-[#E3A126]/50',
-			text: 'text-white'
-		},
-		default: {
-			bg: 'bg-[#E3A126]/5',
-			border: 'border-[#E3A126]/50',
-			text: 'text-[#E3A126]'
-		}
-	},
-
-	pink: {
-		selected: {
-			bg: 'bg-[#FF4BED]/20',
-			border: 'border-[#FF4BED]/50',
-			text: 'text-white'
-		},
-		default: {
-			bg: 'bg-[#FF4BED]/5',
-			border: 'border-[#FF4BED]/50',
-			text: 'text-[#E3A126]'
-		}
-	}
-}
-
 export default function PeriodCard({
-	variant,
+	color,
 	selected,
 	months,
 	price,
@@ -45,15 +19,28 @@ export default function PeriodCard({
 	discount,
 	onClick
 }: PeriodCardProps) {
-	const theme = selected ? styles[variant].selected : styles[variant].default
+	const theme = {
+		bg: hexToRgba(color, selected ? 0.2 : 0.05),
+		border: hexToRgba(color, 0.5),
+		text: selected ? '#FFFFFF' : color
+	}
 	return (
 		<button
 			onClick={onClick}
-			className={`
-        relative flex flex-col gap-y-1  border rounded-lg py-7 pr-7  pl-4 font-manrope text-start ${theme.bg} ${theme.border} ${theme.text}`}
+			style={{
+				backgroundColor: theme.bg,
+				borderColor: theme.border,
+				color: theme.text
+			}}
+			className={
+				'relative flex flex-col gap-y-1  border rounded-lg py-7 pr-7  pl-4 font-manrope text-start'
+			}
 		>
 			{discount && (
-				<span className="absolute -top-3 right-2 rounded-full bg-accent px-2 py-1 text-xs font-bold text-white">
+				<span
+					style={{ backgroundColor: color }}
+					className="absolute -top-3 right-2 rounded-full px-2 py-1 text-xs font-bold text-white"
+				>
 					-{discount}%
 				</span>
 			)}

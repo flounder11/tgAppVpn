@@ -6,6 +6,8 @@ import SubsCardInfo from '../components/Subscription/NewSubscription/SubsCardInf
 import ArrowBack from '../components/ui/arrowBack'
 import Balance from '../components/ui/balance'
 import MainLayout from '../layouts/MainLayout'
+import { useThemeStore } from '../store/useThemeStore'
+import { hexToRgba } from '../utils/color'
 
 export default function SubsCart() {
 	const periods = [
@@ -27,6 +29,7 @@ export default function SubsCart() {
 	const [selected, setSelected] = useState(0)
 	const currentPeriod = periods[selected]
 	const navigate = useNavigate()
+	const cartAccent = useThemeStore(state => state.cartAccent)
 
 	return (
 		<MainLayout>
@@ -37,8 +40,11 @@ export default function SubsCart() {
 					<Balance />
 				</div>
 
-				<div className="p-4 border border-accent rounded-2xl">
-					<SubsCardInfo color="var(--accent)" />
+				<div
+					style={{ borderColor: hexToRgba(cartAccent, 1) }}
+					className="p-4 border rounded-2xl"
+				>
+					<SubsCardInfo color={cartAccent} />
 
 					<div>
 						<p className="text-sm font-manrope text-white mb-2 mt-4">
@@ -50,6 +56,7 @@ export default function SubsCart() {
 								<PeriodCard
 									key={period.months}
 									{...period}
+									color={cartAccent}
 									selected={selected === index}
 									onClick={() => setSelected(index)}
 								/>
@@ -57,7 +64,10 @@ export default function SubsCart() {
 						</div>
 					</div>
 
-					<div className="mx-auto mt-2.5 flex flex-col border border-accent rounded-2xl p-4 gap-y-2 font-manrope">
+					<div
+						style={{ borderColor: hexToRgba(cartAccent, 0.5) }}
+						className="mx-auto mt-2.5 flex flex-col border border-accent rounded-2xl p-4 gap-y-2 font-manrope"
+					>
 						<div className="flex justify-between text-xs text-white items-center">
 							<p>
 								Выбранный период: {currentPeriod.months}{' '}
@@ -90,25 +100,39 @@ export default function SubsCart() {
 									}}
 									className="overflow-hidden w-full"
 								>
-									<span className="block text-accent text-xs font-manrope w-full py-1.5 text-center bg-[#FF4BED]/10 border border-[#FF4BED]/50 rounded-2xl">
+									<span
+										style={{
+											color: cartAccent,
+											backgroundColor: hexToRgba(cartAccent, 0.1),
+											borderColor: hexToRgba(cartAccent, 0.5)
+										}}
+										className="block text-xs font-manrope w-full py-1.5 text-center border rounded-2xl"
+									>
 										Скидка применена -{currentPeriod.discount}%
 									</span>
 								</motion.div>
 							)}
 						</AnimatePresence>
 
-						<hr className="bg-accent/50 border-0 h-[2px]" />
+						<hr
+							style={{ backgroundColor: hexToRgba(cartAccent, 0.5) }}
+							className="bg-accent/50 border-0 h-[2px]"
+						/>
 
 						<div className="flex justify-between font-semibold items-center">
 							<p className="text-xs text-white">К оплате</p>
-							<span className="text-xl text-[#E3A126]/80">
+							<span
+								style={{ color: hexToRgba(cartAccent, 0.8) }}
+								className="text-xl"
+							>
 								{currentPeriod.price} ₽
 							</span>
 						</div>
 
 						<button
 							onClick={() => navigate('/balance')}
-							className="font-bold text-white rounded-2xl bg-accent/80 py-2 w-full mx-auto"
+							style={{ backgroundColor: hexToRgba(cartAccent, 0.8) }}
+							className="font-bold text-white rounded-2xl py-2 w-full mx-auto"
 						>
 							Купить тариф
 						</button>

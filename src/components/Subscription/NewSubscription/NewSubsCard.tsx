@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useThemeStore } from '../../../store/useThemeStore'
 import SubsCardInfo from './SubsCardInfo'
 
 interface INewSubsCardProps {
@@ -8,6 +9,12 @@ interface INewSubsCardProps {
 
 export default function NewSubsCard({ color, bgColor }: INewSubsCardProps) {
 	const navigate = useNavigate()
+	const setCartTheme = useThemeStore(state => state.setCartTheme)
+
+	const handleClick = () => {
+		setCartTheme(color, bgColor)
+		navigate('/sub/cart')
+	}
 
 	return (
 		<div
@@ -32,7 +39,7 @@ export default function NewSubsCard({ color, bgColor }: INewSubsCardProps) {
 			</p>
 
 			<button
-				onClick={() => navigate('/sub/cart')}
+				onClick={handleClick}
 				style={{
 					backgroundColor: color
 				}}

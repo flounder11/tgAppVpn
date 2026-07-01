@@ -45,7 +45,7 @@ export default function BottomNav() {
 					const isActive =
 						item.id === 'home'
 							? location.pathname === '/'
-							: location.pathname === `/${item.id}`
+							: location.pathname.startsWith(`/${item.id}`)
 
 					return (
 						<button

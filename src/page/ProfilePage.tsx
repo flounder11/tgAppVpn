@@ -17,9 +17,14 @@ export default function ProfilePage() {
 			id: 'transactions',
 			title: 'Транзакции',
 			img: TransactionSvg,
-			onClick: () => navigate('/profile/transaction')
+			onClick: () => navigate('transaction')
 		},
-		{ id: 'bonuses', title: 'Бонусы', img: ReferralSvg },
+		{
+			id: 'bonuses',
+			title: 'Бонусы',
+			img: ReferralSvg,
+			onClick: () => navigate('/referral')
+		},
 		{
 			id: 'device',
 			title: 'Мои устройства',
