@@ -1,9 +1,9 @@
 // src/components/Home/slidesData.ts
-import GlobeCorp from '../../assets/globes/corp.svg'
-import GlobeDaily from '../../assets/globes/daily.svg'
-import GlobePremium from '../../assets/globes/premium.svg'
-import GlobeStart from '../../assets/globes/start.svg'
-import GlobeVps from '../../assets/globes/vps.svg'
+import World1 from '../../assets/World 1.svg'
+import World2 from '../../assets/World 2.svg'
+import World3 from '../../assets/World 3.svg'
+import World4 from '../../assets/World 4.svg'
+import World5 from '../../assets/World 5.svg'
 
 export interface Slide {
 	id: number
@@ -13,7 +13,8 @@ export interface Slide {
 	label: string
 	price: string
 	traffic: string
-	globe: string
+	texture: string
+	rotationY: number // в радианах, вращение только по Y
 }
 
 export const slides: Slide[] = [
@@ -25,7 +26,8 @@ export const slides: Slide[] = [
 		label: 'ПРЕМИУМ',
 		price: '350₽/месяц за устройство',
 		traffic: '134 ГБ',
-		globe: GlobePremium
+		texture: World1,
+		rotationY: 0
 	},
 	{
 		id: 1,
@@ -35,7 +37,8 @@ export const slides: Slide[] = [
 		label: 'СТАРТОВЫЙ',
 		price: '150₽/месяц за устройство',
 		traffic: '30 ГБ',
-		globe: GlobeStart
+		texture: World2,
+		rotationY: -Math.PI / 2
 	},
 	{
 		id: 2,
@@ -45,7 +48,8 @@ export const slides: Slide[] = [
 		label: 'СУТОЧНЫЙ',
 		price: '35₽/день за устройство',
 		traffic: '10 ГБ',
-		globe: GlobeDaily
+		texture: World3,
+		rotationY: -Math.PI
 	},
 	{
 		id: 3,
@@ -55,7 +59,8 @@ export const slides: Slide[] = [
 		label: 'VPS',
 		price: '99₽/месяц за устройство',
 		traffic: 'Безлимит',
-		globe: GlobeVps
+		texture: World4,
+		rotationY: -Math.PI * 1.5
 	},
 	{
 		id: 4,
@@ -65,6 +70,7 @@ export const slides: Slide[] = [
 		label: 'КОРПОРАТИВНЫЙ',
 		price: '99₽/месяц за устройство',
 		traffic: 'Безлимит',
-		globe: GlobeCorp
+		texture: World5,
+		rotationY: -Math.PI * 2
 	}
 ]
