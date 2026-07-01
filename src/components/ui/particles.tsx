@@ -8,13 +8,13 @@ import React, {
 
 import { cn } from '@/lib/utils'
 
-interface MousePosition {
+interface MousePositionState {
 	x: number
 	y: number
 }
 
-function MousePosition(): MousePosition {
-	const [mousePosition, setMousePosition] = useState<MousePosition>({
+function useMousePosition(): MousePositionState {
+	const [mousePosition, setMousePosition] = useState<MousePositionState>({
 		x: 0,
 		y: 0
 	})
@@ -92,7 +92,7 @@ export const Particles: React.FC<ParticlesProps> = ({
 	const canvasContainerRef = useRef<HTMLDivElement>(null)
 	const context = useRef<CanvasRenderingContext2D | null>(null)
 	const circles = useRef<Circle[]>([])
-	const mousePosition = MousePosition()
+	const mousePosition = useMousePosition()
 	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 })
 	const dpr = typeof window !== 'undefined' ? window.devicePixelRatio : 1
