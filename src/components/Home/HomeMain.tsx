@@ -20,7 +20,7 @@ export default function HomeMain() {
 		<div>
 			<p
 				style={{ fontSize: activeSlide.labelSize }}
-				className="tracking-[2.9px] text-surface/20 mb-6 text-center whitespace-nowrap [-webkit-text-stroke:2px_var(--accent)] [text-shadow:0_0_10px_color-mix(in_oklab,var(--accent)_5%,transparent)] font-bold font-tektur"
+				className="relative left-1/2 -translate-x-1/2 w-max mb-6 tracking-[2.9px] text-surface/20 text-center whitespace-nowrap [-webkit-text-stroke:2px_var(--accent)] [text-shadow:0_0_10px_color-mix(in_oklab,var(--accent)_5%,transparent)] font-bold font-tektur"
 			>
 				{activeSlide.label}
 			</p>
