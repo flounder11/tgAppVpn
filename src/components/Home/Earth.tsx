@@ -67,6 +67,7 @@ export default function Earth({ activeSlide }: Props) {
 			<sphereGeometry args={[2, 96, 96]} />
 			<meshBasicMaterial
 				map={textures[activeSlide]}
+				color="#8c8c94"
 				toneMapped={false}
 			/>
 		</mesh>

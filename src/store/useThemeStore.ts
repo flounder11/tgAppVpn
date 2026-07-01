@@ -4,12 +4,13 @@ import { persist } from 'zustand/middleware'
 interface IInitialState {
 	accent: string
 	bg: string
+	glass: string
 	currentSlide: number
 	cartTariffId: string
 	cartAccent: string
 	cartBg: string
 
-	setTheme: (accent: string, bg: string) => void
+	setTheme: (accent: string, bg: string, glass: string) => void
 	setCurrentSlide: (index: number) => void
 	setCart: (cartTariffId: string, cartAccent: string, cartBg: string) => void
 }
@@ -17,6 +18,7 @@ interface IInitialState {
 const initialState = {
 	accent: '#E3A126',
 	bg: '#0D010C',
+	glass: '#9D5CC8',
 	currentSlide: 0,
 	cartTariffId: 'premium',
 	cartAccent: '#E3A126',
@@ -26,10 +28,11 @@ const initialState = {
 const themeStore: StateCreator<IInitialState> = set => ({
 	...initialState,
 
-	setTheme: (accent, bg) =>
+	setTheme: (accent, bg, glass) =>
 		set({
 			accent,
-			bg
+			bg,
+			glass
 		}),
 
 	setCurrentSlide: currentSlide =>

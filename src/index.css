@@ -17,6 +17,8 @@
 	--color-danger: #eb5454;
 	--color-success: #70dd62;
 	--color-glow: #6d28d9;
+	/* Per-tier тинт «жидкого стекла» (баланс/кнопка/менеджер) — ставится по слайду через --glass (ThemeProvider) */
+	--color-glass: var(--glass, #9d5cc8);
 }
 
 * {
