@@ -24,7 +24,7 @@ export default function HomeMain() {
 
 			<GlobeSlider />
 
-			<button className="glass font-manrope text-xl font-semibold text-accent rounded-full w-full py-4 mt-6 mb-4">
+			<button className="font-manrope text-xl font-semibold bg-background text-accent border-accent border rounded-4xl py-4 px-18 flex mx-auto mt-6 mb-4">
 				{activeSlide.days === 0 ? 'Приобрести тариф' : 'Продлить тариф'}
 			</button>
 
