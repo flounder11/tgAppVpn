@@ -24,7 +24,7 @@ export default function HomeMain() {
 
 			<GlobeSlider />
 
-			<button className="text-manrope text-xl font-semibold bg-background text-accent border-accent border rounded-4xl py-4 px-18 flex mx-auto mt-6 mb-4">
+			<button className="glass font-manrope text-xl font-semibold text-accent rounded-full w-full py-4 mt-6 mb-4">
 				{activeSlide.days === 0 ? 'Приобрести тариф' : 'Продлить тариф'}
 			</button>
 
@@ -46,7 +46,7 @@ export default function HomeMain() {
 				</div>
 			</div>
 
-			<button className="flex gap-x-2 py-2 px-3 mx-auto rounded-2xl bg-white/[0.02] backdrop-blur-xs shadow-[0_8px_32px_rgba(0,0,0,.1)] border-gray-800 shadow-lg shadow-purple-500/10 mb-3">
+			<button className="glass-neutral flex gap-x-2 py-2 px-3 mx-auto rounded-2xl mb-3">
 				<SettingSvg />
 
 				<span className="font-manrope font-semibold text-white">

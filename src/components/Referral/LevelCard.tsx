@@ -24,7 +24,7 @@ export default function LevelCard({ data }: ILevelCard) {
 	const levelDiscounts = [10, 15, 18, 20, 25]
 
 	return (
-		<div className="border border-accent/50 rounded-2xl pt-4 px-3 pb-2.5 bg-background">
+		<div className="border border-accent/50 rounded-2xl pt-4 px-3 pb-2.5 bg-surface">
 			<div className="flex items-center gap-x-4">
 				<div className="shrink-0">
 					<LevelCircle

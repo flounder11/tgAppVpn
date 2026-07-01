@@ -33,7 +33,7 @@ export default function NewSubsCard({ tariff }: INewSubsCardProps) {
 				reset={tariff.reset}
 			/>
 
-			<p className="font-manrope text-white">
+			<p className="font-manrope text-sm text-white">
 				от{' '}
 				<span
 					style={{
@@ -50,7 +50,7 @@ export default function NewSubsCard({ tariff }: INewSubsCardProps) {
 				style={{
 					backgroundColor: tariff.accent
 				}}
-				className="w-full font-manrope block mx-auto py-2.5 font-bold text-white rounded-3xl"
+				className="w-full font-manrope block mx-auto py-2.5 font-semibold text-white rounded-3xl"
 			>
 				Купить тариф
 			</button>

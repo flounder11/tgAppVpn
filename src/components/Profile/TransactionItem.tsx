@@ -23,7 +23,7 @@ export default function TransactionItem({
 
 			<p
 				className={`text-sm font-medium whitespace-nowrap ${
-					isPositive ? 'text-[#70dd62]' : 'text-[#EB5454]'
+					isPositive ? 'text-success' : 'text-danger'
 				}`}
 			>
 				{isPositive ? '+' : ''}

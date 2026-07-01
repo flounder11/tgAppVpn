@@ -15,7 +15,7 @@ export default function MainProfileTabs({
 	return (
 		<div
 			onClick={onClick}
-			className="bg-[#0D010C]/70 border border-accent/50 rounded-xl py-2 pl-4 flex gap-x-2 text-white font-manrope hover:bg-accent/60"
+			className="bg-surface/70 border border-accent/50 rounded-xl py-2 pl-4 flex gap-x-2 text-white font-manrope hover:bg-accent/60"
 		>
 			<Icon
 				size={25}

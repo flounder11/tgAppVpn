@@ -23,7 +23,7 @@ export default function LevelStep({
 							className={`rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300 ${
 								isActive
 									? 'w-9 h-9 bg-accent text-black border-0'
-									: 'w-[30px] h-[30px] bg-background border border-white/20 text-white/20'
+									: 'w-[30px] h-[30px] bg-surface border border-white/20 text-white/20'
 							}`}
 						>
 							{level}

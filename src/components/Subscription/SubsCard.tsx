@@ -1,9 +1,9 @@
 export default function SubsCard() {
 	return (
-		<div className="border-accent/60 bg-[#0D010C]/60 border rounded-2xl px-2 pt-2 pb-4 shadow-[0_0_24px_0_rgba(227,161,38,0.06)]">
+		<div className="border-accent/60 bg-surface/60 border rounded-2xl px-2 pt-2 pb-4 shadow-[0_0_24px_0_rgba(227,161,38,0.06)]">
 			<div className="flex justify-between items-center mb-2">
-				<p className="font-manrope text-accent font-bold text-xl">Посуточный</p>
-				<span className="text-xs font-manrope text-[#70dd62]">Активная</span>
+				<p className="font-tektur text-accent font-bold text-2xl">Посуточный</p>
+				<span className="text-xs font-manrope text-success">Активная</span>
 			</div>
 
 			<div className="flex flex-col gap-y-2 text-white font-manrope mb-2 text-sm font-light">

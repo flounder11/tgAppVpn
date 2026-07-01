@@ -105,7 +105,7 @@ export default function EmailModal({
 								value={email}
 								onChange={e => setEmail(e.target.value)}
 								placeholder="example@mail.com"
-								className="w-full text-white border text-xs border-gray-600 rounded-2xl py-3 pl-4 outline-0"
+								className="w-full text-white border text-xs border-white/15 rounded-2xl py-3 pl-4 outline-0"
 							/>
 							<p className="text-white/40 text-xs">
 								На эту почту будет отправлен код подтверждения
@@ -115,7 +115,7 @@ export default function EmailModal({
 						<div className="flex justify-between mt-2">
 							<button
 								onClick={onClose}
-								className="bg-[#EB5454]/10 border border-[#EB5454] rounded-2xl text-[#EB5454]  h-[35px] text-center text-sm max-w-[153px] w-full"
+								className="bg-danger/10 border border-danger rounded-2xl text-danger  h-[35px] text-center text-sm max-w-[153px] w-full"
 							>
 								Отмена
 							</button>
@@ -151,7 +151,7 @@ export default function EmailModal({
 									onChange={e => handleCodeChange(e.target.value, i)}
 									onKeyDown={e => handleCodeKeyDown(e, i)}
 									onPaste={handleCodePaste}
-									className="w-9 h-9 text-white text-center rounded-lg border border-accent bg-[#0D010C]/70 outline-0"
+									className="w-9 h-9 text-white text-center rounded-lg border border-accent bg-surface/70 outline-0"
 								/>
 							))}
 						</div>
@@ -172,7 +172,7 @@ export default function EmailModal({
 						<div className="flex justify-between mt-2">
 							<button
 								onClick={onClose}
-								className="bg-[#EB5454]/10 border border-[#EB5454] rounded-2xl text-[#EB5454]  h-[35px] text-center text-sm max-w-[153px] w-full"
+								className="bg-danger/10 border border-danger rounded-2xl text-danger  h-[35px] text-center text-sm max-w-[153px] w-full"
 							>
 								Отмена
 							</button>

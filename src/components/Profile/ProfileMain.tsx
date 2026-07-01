@@ -8,10 +8,10 @@ export default function ProfileMain() {
 	const name = 'Gadik'
 
 	return (
-		<div className="flex flex-col gap-y-4 bg-[#0D010CB2]/70 border border-accent/50 rounded-2xl px-4 pt-4 pb-6">
+		<div className="flex flex-col gap-y-4 bg-surface/70 border border-accent/50 rounded-2xl px-4 pt-4 pb-6">
 			<div className="flex gap-x-3 items-center">
 				<div className="size-[60px] shrink-0 rounded-full bg-accent flex items-center justify-center">
-					<span className="text-2xl font-bold text-[#0D010C] font-manrope">
+					<span className="text-2xl font-bold text-surface font-manrope">
 						{name.charAt(0)}
 					</span>
 				</div>

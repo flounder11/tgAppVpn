@@ -98,14 +98,14 @@ export default function GlobeSlider() {
 			<div className="absolute inset-0 z-30 flex flex-col items-center justify-center pointer-events-none">
 				<h2
 					key={slide.id}
-					className="text-mozilla-headline text-accent text-9xl leading-[0.8] font-semibold animate-in fade-in zoom-in-95 duration-300"
+					className="font-mozilla-headline text-accent text-9xl leading-[0.8] font-semibold animate-in fade-in zoom-in-95 duration-300"
 				>
 					{slide.days}
 				</h2>
-				<p className="text-mozilla-headline text-accent text-2xl font-medium">
+				<p className="font-mozilla-headline text-accent text-2xl font-medium">
 					ОСТАЛОСЬ
 				</p>
-				<p className="text-mozilla-headline text-accent text-2xl font-medium">
+				<p className="font-mozilla-headline text-accent text-2xl font-medium">
 					ДНЕЙ
 				</p>
 			</div>

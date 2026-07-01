@@ -181,7 +181,7 @@ export default function SubsCart() {
 						<button
 							onClick={() => navigate('/balance')}
 							style={{ backgroundColor: hexToRgba(cartAccent, 0.8) }}
-							className="font-bold text-white rounded-2xl py-2 w-full mx-auto"
+							className="font-manrope font-semibold text-xl text-white rounded-2xl py-2 w-full mx-auto"
 						>
 							Купить тариф
 						</button>

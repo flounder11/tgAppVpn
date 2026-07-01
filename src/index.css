@@ -10,6 +10,13 @@
 	--font-tektur: 'Tektur', sans-serif;
 	--font-manrope: 'Manrope', sans-serif;
 	--font-mozilla-headline: 'Mozilla Headline', sans-serif;
+
+	/* Бренд — семантические цвета (единый источник, без хардкода по компонентам) */
+	--color-surface: #0d010c;
+	--color-surface-2: #090108;
+	--color-danger: #eb5454;
+	--color-success: #70dd62;
+	--color-glow: #6d28d9;
 }
 
 * {
@@ -164,4 +171,26 @@ textarea {
 	html {
 		@apply font-sans;
 	}
+}
+
+/* Жидкое стекло — тон по текущему акценту темы (--accent) */
+@utility glass {
+	background-color: color-mix(in oklab, var(--accent) 8%, transparent);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	border: 1px solid color-mix(in oklab, var(--accent) 55%, transparent);
+	box-shadow:
+		0 0 14px 0 color-mix(in oklab, var(--accent) 20%, transparent),
+		inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Нейтральное матовое стекло (навбар, дровер, «Менеджер устройств») — тёмная база */
+@utility glass-neutral {
+	background-color: color-mix(in oklab, var(--color-surface) 55%, transparent);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.35),
+		inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
 }

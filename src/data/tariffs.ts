@@ -52,7 +52,7 @@ export const tariffs: Tariff[] = [
 		devices: '1 устройство',
 		reset: 'Сброс ежемесячно',
 		priceFrom: 350,
-		accent: '#E3A025',
+		accent: '#E3A126',
 		bg: '#0D010C',
 		periods: monthlyPeriods(350)
 	},

@@ -80,7 +80,7 @@ export default function AddDeviceModal({ onClose }: IAddDeviceModal) {
 						</button>
 
 						{isSelectOpen && (
-							<div className="absolute top-full left-0 right-0 mt-1 bg-[#1B0618] border border-accent/50 rounded-2xl overflow-hidden z-10">
+							<div className="absolute top-full left-0 right-0 mt-1 bg-surface-2 border border-accent/50 rounded-2xl overflow-hidden z-10">
 								{(Object.keys(platformLabels) as Platform[]).map(key => (
 									<button
 										key={key}

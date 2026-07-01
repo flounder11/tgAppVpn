@@ -22,7 +22,7 @@ export default function ReferralPage() {
 
 				<LevelCard data={currentLevel} />
 
-				<button className="font-bold text-white py-2 w-full bg-accent mt-4 mb-6 rounded-full">
+				<button className="font-semibold text-xl text-white py-2 w-full bg-accent mt-4 mb-6 rounded-full">
 					Поделиться ссылкой
 				</button>
 
@@ -30,29 +30,29 @@ export default function ReferralPage() {
 					<p className="text-xl font-medium text-white mb-2">Бонусы</p>
 
 					<div className="grid grid-cols-2 gap-2 text-white mb-6">
-						<div className="text-xs border bg-background border-white/10 rounded-lg py-1.5 px-2 items-start">
+						<div className="text-xs border bg-surface border-white/10 rounded-lg py-1.5 px-2 items-start">
 							<p>Кол-во рефералов:</p>
 							<span className="text-2xl font-bold">5</span>
 						</div>
 
-						<div className="text-xs border bg-background border-white/10 rounded-lg py-1.5 px-2 items-start">
+						<div className="text-xs border bg-surface border-white/10 rounded-lg py-1.5 px-2 items-start">
 							<p>Всего заработано:</p>
 							<span className="text-2xl font-bold text-accent">34 ₽</span>
 						</div>
 
-						<div className="text-xs border bg-background border-white/10 rounded-lg py-1.5 px-2 items-start">
+						<div className="text-xs border bg-surface border-white/10 rounded-lg py-1.5 px-2 items-start">
 							<p>Активных рефералов:</p>
 							<span className="text-2xl font-bold">3</span>
 						</div>
 
-						<div className="text-xs border bg-background border-white/10 rounded-lg py-1.5 px-2 items-start">
+						<div className="text-xs border bg-surface border-white/10 rounded-lg py-1.5 px-2 items-start">
 							<p>Доступно к выводу:</p>
-							<span className="text-2xl font-bold text-[#e65967]">34 ₽</span>
+							<span className="text-2xl font-bold text-danger">34 ₽</span>
 						</div>
 					</div>
 				</div>
 
-				<button className="text-white/60 font-bold py-2.5 w-full bg-background rounded-full border border-accent mb-4">
+				<button className="text-white/60 font-semibold text-xl py-2.5 w-full bg-surface rounded-full border border-accent mb-4">
 					Вывести
 				</button>
 

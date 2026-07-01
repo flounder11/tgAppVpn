@@ -57,16 +57,16 @@ export default function TransactionPage() {
 							<RadioTabs
 								value={value}
 								onValueChange={setValue}
-								containerClassName="bg-[#0D010C] dark:bg-[#0D010C] border-0 p-1.5"
+								containerClassName="bg-surface dark:bg-surface border-0 p-1.5"
 							>
 								<RadioTabsItem
-									className="data-[state=checked]:bg-accent! data-[state=checked]:text-white data-[state=checked]:border-0 text-sm data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
+									className="data-[state=checked]:bg-accent! data-[state=checked]:text-white data-[state=checked]:border-0 text-sm data-[state=checked]:font-manrope data-[state=checked]:font-medium text-white/40 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
 									value="history"
 								>
 									История ({mockHistory.length})
 								</RadioTabsItem>
 								<RadioTabsItem
-									className="data-[state=checked]:bg-accent! data-[state=checked]:text-white data-[state=checked]:border-0 text-sm data-[state=checked]:font-manrope data-[state=checked]:font-medium text-gray-400 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
+									className="data-[state=checked]:bg-accent! data-[state=checked]:text-white data-[state=checked]:border-0 text-sm data-[state=checked]:font-manrope data-[state=checked]:font-medium text-white/40 data-[state=checked]:py-2 data-[state=checked]:rounded-2xl"
 									value="pending"
 								>
 									В обработке ({mockPending.length})

@@ -35,7 +35,7 @@ export default function RangeSlider({
 				className="w-full h-1.5 cursor-pointer appearance-auto bg-white/10 rounded-full"
 			/>
 
-			<div className="flex justify-between items-center text-[11px] text-white/40 mt-1">
+			<div className="flex justify-between items-center text-[10px] text-white/40 mt-1">
 				<span>{minLabel}</span>
 				<span
 					style={{ color }}

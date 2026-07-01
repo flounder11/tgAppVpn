@@ -22,7 +22,9 @@ export default function DeviceModal({ onClose }: IDeviceModal) {
 		<div className="fixed inset-0 z-20 flex items-center justify-center bg-black/20 backdrop-blur-xs">
 			<div className="bg-background border border-accent/50 rounded-xl w-full max-w-[354px] p-4 font-manrope">
 				<div className="flex justify-between items-center">
-					<p className="text-white text-2xl font-bold">Мои устройства</p>
+					<p className="text-white text-2xl font-bold font-tektur">
+						Мои устройства
+					</p>
 
 					<img
 						src={CloseImg}
@@ -47,7 +49,7 @@ export default function DeviceModal({ onClose }: IDeviceModal) {
 
 							<button
 								onClick={handleUnlink}
-								className="text-[#EB5454] text-xs border border-[#EB5454] bg-[#EB5454]/10 rounded-2xl py-2.5 px-4"
+								className="text-danger text-xs border border-danger bg-danger/10 rounded-2xl py-2.5 px-4"
 							>
 								Отвязать устройство
 							</button>
