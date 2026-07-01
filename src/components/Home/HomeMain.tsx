@@ -49,7 +49,7 @@ export default function HomeMain() {
 				</div>
 			</div>
 
-			<button className="flex gap-x-2 items-center bg-glass/10 [box-shadow:inset_0_3px_4px_0_rgba(0,0,0,0.12)] py-[5px] px-2 mx-auto rounded-2xl mb-3">
+			<button className="flex gap-x-2 items-center bg-glass/10 liquid-glass py-[5px] px-2 mx-auto rounded-2xl mb-3">
 				<SettingSvg />
 
 				<span className="font-manrope font-semibold leading-7 text-white">

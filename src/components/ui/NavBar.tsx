@@ -45,7 +45,7 @@ export default function BottomNav() {
 				bottom: 'calc(16px + var(--tg-viewport-safe-area-inset-bottom, 0px))'
 			}}
 		>
-			<nav className="flex items-center justify-around rounded-full bg-surface/20 backdrop-blur-md [box-shadow:0_8px_32px_rgba(0,0,0,0.35)] px-4 py-3">
+			<nav className="flex items-center justify-around rounded-full bg-surface/20 liquid-glass px-4 py-3">
 				{items.map(item => {
 					const Icon = item.icon
 					const isActive =
