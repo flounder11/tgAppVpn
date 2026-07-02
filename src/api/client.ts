@@ -1,4 +1,3 @@
-// src/api/client.ts
 import { retrieveLaunchParams } from '@telegram-apps/sdk-react'
 
 const BASE_URL =

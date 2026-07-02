@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 
 interface ILevelCircle {
-	level: number // текущий уровень, целое число 1..totalLevels
+	level: number
 	totalLevels?: number
 	color: string // цвет закрашенных секций для текущего уровня
 	size?: number

@@ -1,4 +1,3 @@
-// src/api/subscriptions.ts
 import { apiClient } from './client'
 import type {
 	ApiResponse,

@@ -1,4 +1,3 @@
-// src/api/tariffs.ts
 import { apiClient } from './client'
 import type { ApiResponse, Tariff } from './types'
 

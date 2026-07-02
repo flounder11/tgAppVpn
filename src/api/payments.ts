@@ -1,4 +1,3 @@
-// src/api/payments.ts
 import { apiClient } from './client'
 import type {
 	ApiResponse,

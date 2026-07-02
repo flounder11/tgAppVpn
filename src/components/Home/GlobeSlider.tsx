@@ -23,10 +23,10 @@ export default function GlobeSlider({ slides }: Props) {
 	const ringRef = useRef<HTMLDivElement>(null!)
 
 	const goToSlide = (index: number) => {
-		const clamped = Math.max(0, Math.min(slides.length - 1, index))
-		if (clamped === currentSlide) return
-		setCurrentSlide(clamped)
-		setTheme(slides[clamped].accent, slides[clamped].bg)
+		const wrapped = ((index % slides.length) + slides.length) % slides.length
+		if (wrapped === currentSlide) return
+		setCurrentSlide(wrapped)
+		setTheme(slides[wrapped].accent, slides[wrapped].bg)
 	}
 
 	// анимация свечения при свайпе

@@ -39,8 +39,6 @@ export default function SubsCart() {
 
 	const tariff = tariffs.find(t => t.id === tariffId)
 
-	// periods у тарифа уже включает базовый план (совпадающий с tariff.duration_days/price_rub) —
-	// добавлять его отдельно не нужно, иначе он задваивается.
 	const periods: PeriodOption[] = tariff
 		? tariff.periods
 				.filter(p => p.is_active)

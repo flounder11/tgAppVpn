@@ -1,4 +1,3 @@
-// src/api/referrals.ts
 import { apiClient } from './client'
 import type {
 	ApiResponse,

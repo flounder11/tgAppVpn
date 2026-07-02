@@ -1,4 +1,3 @@
-// src/api/promocodes.ts
 import { apiClient } from './client'
 import type { ApiResponse, ApplyPromocodePayload } from './types'
 

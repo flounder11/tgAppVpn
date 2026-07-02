@@ -1,4 +1,3 @@
-// src/api/partners.ts
 import { apiClient } from './client'
 import type { ApiResponse, CreateWithdrawalPayload } from './types'
 

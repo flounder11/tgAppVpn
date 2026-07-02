@@ -3,7 +3,6 @@ import NewSubsCard from '../components/Subscription/NewSubscription/NewSubsCard'
 import ArrowBack from '../components/ui/arrowBack'
 import Balance from '../components/ui/balance'
 import MainLayout from '../layouts/MainLayout'
-import { isPurchasableTariff } from '../lib/tariffFilters'
 import { getTariffTheme } from '../lib/tariffTheme'
 import { useTariffStore } from '../store/useTariffStore'
 
@@ -17,7 +16,7 @@ export default function NewSubsPage() {
 		fetchTariffs()
 	}, [fetchTariffs])
 
-	const activeTariffs = tariffs.filter(isPurchasableTariff)
+	const activeTariffs = tariffs.filter(t => t.is_active && !t.is_deleted)
 
 	return (
 		<MainLayout>

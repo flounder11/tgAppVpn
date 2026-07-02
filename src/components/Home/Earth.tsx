@@ -10,7 +10,6 @@ interface Props {
 
 // вынесено за пределы компонента — стабильная ссылка, useLoader не зацикливается.
 // Текстур всего 4 (по числу тем в TARIFF_THEMES), при большем числе тарифов
-// они циклически переиспользуются по индексу слайда.
 const TEXTURE_URLS = TARIFF_THEMES.map(t => t.texture)
 
 export default function Earth({ activeSlide }: Props) {

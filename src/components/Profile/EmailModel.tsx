@@ -31,7 +31,6 @@ export default function EmailModal({
 		return () => clearTimeout(timer)
 	}, [step, cooldown])
 
-	// функция для переключения между input для ввода кода
 	const handleCodeChange = (value: string, index: number) => {
 		if (!/^\d*$/.test(value)) return // только цифры
 
@@ -123,9 +122,7 @@ export default function EmailModal({
 							</p>
 						</div>
 
-						{error && (
-							<p className="text-[#EB5454] text-xs mt-2">{error}</p>
-						)}
+						{error && <p className="text-[#EB5454] text-xs mt-2">{error}</p>}
 
 						<div className="flex justify-between mt-2">
 							<button
@@ -158,6 +155,7 @@ export default function EmailModal({
 						<div className="flex gap-x-2 justify-center my-2">
 							{code.map((digit, i) => (
 								<input
+									type="number"
 									key={i}
 									ref={el => {
 										codeRefs.current[i] = el
@@ -186,9 +184,7 @@ export default function EmailModal({
 							</p>
 						)}
 
-						{error && (
-							<p className="text-[#EB5454] text-xs mt-2">{error}</p>
-						)}
+						{error && <p className="text-[#EB5454] text-xs mt-2">{error}</p>}
 
 						<div className="flex justify-between mt-2">
 							<button

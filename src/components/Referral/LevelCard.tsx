@@ -9,8 +9,6 @@ interface ILevelCard {
 	isClaiming?: boolean
 }
 
-// Фиксированная лестница уровней для наглядности — эндпоинта со списком всех
-// уровней в API нет, проценты комиссий по уровням не запрашиваются с бэкенда.
 const LEVEL_DISCOUNTS = [10, 15, 18, 20, 25]
 
 export default function LevelCard({

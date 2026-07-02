@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import type { Tariff } from '../../api/types'
-import { isPurchasableTariff } from '../../lib/tariffFilters'
 import { getTariffTheme } from '../../lib/tariffTheme'
 import { useSubscriptionStore } from '../../store/useSubscriptionStore'
 import { useTariffStore } from '../../store/useTariffStore'
@@ -32,7 +31,7 @@ export function useSlideTariffData() {
 	}, [fetchTariffs, fetchActive])
 
 	const slides: HomeSlide[] = tariffs
-		.filter(isPurchasableTariff)
+		.filter(tariff => tariff.is_active && !tariff.is_deleted)
 		.map((tariff, index) => {
 			const theme = getTariffTheme(index)
 			const days =

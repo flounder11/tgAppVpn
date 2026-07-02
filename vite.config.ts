@@ -20,7 +20,7 @@ export default defineConfig({
 		sourcemap: true
 	},
 	server: {
-		host: true, // слушать на 0.0.0.0, а не только localhost — иначе туннель не достучится
-		allowedHosts: true // разрешить любые хосты (в т.ч. случайные *.trycloudflare.com); можно указать конкретный домен строкой/массивом вместо true
+		host: true,
+		allowedHosts: true
 	}
 })
