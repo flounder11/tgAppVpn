@@ -41,7 +41,7 @@ export default function SubscriptionPage() {
 					</p>
 				)}
 
-				<div className="flex flex-col gap-y-3">
+				<div className="flex flex-col gap-y-3 md:grid md:grid-cols-2 md:gap-4">
 					{visible.map(subscription => (
 						<SubsCard
 							key={subscription.id}

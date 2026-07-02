@@ -6,7 +6,7 @@ interface Props {
 
 export default function Globe({ activeSlide }: Props) {
 	return (
-		<div className="h-[336px] w-[336px] pointer-events-none">
+		<div className="h-full w-full pointer-events-none">
 			<Scene activeSlide={activeSlide} />
 		</div>
 	)

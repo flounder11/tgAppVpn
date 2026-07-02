@@ -40,7 +40,7 @@ export default function BottomNav() {
 
 	return (
 		<div
-			className="fixed left-1/2 z-50 w-[360px] -translate-x-1/2"
+			className="fixed left-1/2 z-50 w-[calc(100%-2rem)] max-w-90 -translate-x-1/2 md:hidden"
 			style={{
 				bottom: 'calc(16px + var(--tg-viewport-safe-area-inset-bottom, 0px))'
 			}}

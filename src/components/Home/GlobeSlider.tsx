@@ -69,7 +69,7 @@ export default function GlobeSlider({ slides }: Props) {
 
 	return (
 		<div
-			className="relative w-[336px] h-[336px] mx-auto touch-pan-y select-none cursor-grab active:cursor-grabbing"
+			className="relative w-full max-w-[336px] aspect-square mx-auto touch-none select-none cursor-grab active:cursor-grabbing"
 			onPointerDown={handlePointerDown}
 			onPointerUp={handlePointerUp}
 			onPointerCancel={() => (dragging.current = false)}
@@ -77,7 +77,7 @@ export default function GlobeSlider({ slides }: Props) {
 			{/* Свечение */}
 			<div
 				ref={glowRef}
-				className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[480px] rounded-full pointer-events-none transition-colors duration-[1300ms] ease-in-out z-0"
+				className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[101%] h-[143%] rounded-full pointer-events-none transition-colors duration-[1300ms] ease-in-out z-0"
 				style={{
 					background: `radial-gradient(ellipse, ${accent}59 0%, ${accent}1F 35%, transparent 70%)`,
 					filter: 'blur(48px)'

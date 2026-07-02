@@ -18,7 +18,7 @@ function App() {
 				<Particles className="fixed inset-0 w-full h-full" />
 
 				<div className="overflow-x-hidden">
-					<div className="relative z-10 min-h-dvh max-w-[354px] mx-auto">
+					<div className="relative z-10 mx-auto  min-h-dvh">
 						<Routes>
 							<Route
 								path="/"

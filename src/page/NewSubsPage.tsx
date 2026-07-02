@@ -29,7 +29,7 @@ export default function NewSubsPage() {
 				<Balance />
 			</div>
 
-			<div className="flex flex-col gap-y-4">
+			<div className="flex flex-col gap-y-4 md:grid md:grid-cols-3 md:gap-4">
 				{isLoading && activeTariffs.length === 0 && (
 					<p className="text-white/40 text-center">Загрузка тарифов...</p>
 				)}

@@ -17,7 +17,7 @@ export default function BalancePage() {
 
 	return (
 		<MainLayout>
-			<div className=" bg-background">
+			<div className="bg-background md:max-w-4xl">
 				<div className="flex justify-end my-4">
 					<Balance />
 				</div>
@@ -53,7 +53,7 @@ export default function BalancePage() {
 					<input
 						value={amount}
 						onChange={e => setAmount(e.target.value)}
-						className="border border-accent rounded-2xl text-3xl text-white h-11 outline-0"
+						className="border border-accent rounded-2xl text-3xl text-white h-11 outline-0 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
 						type="number"
 					/>
 
@@ -66,7 +66,7 @@ export default function BalancePage() {
 							<button
 								key={quick}
 								onClick={() => setAmount(String(quick))}
-								className="border border-accent rounded-4xl px-3 py-2"
+								className="border border-accent rounded-4xl px-3 py-2 md:px-18"
 							>
 								{quick} ₽
 							</button>
