@@ -11,6 +11,7 @@ export interface Slide {
 	accent: string
 	bg: string
 	glass: string // per-tier тинт «жидкого стекла» (баланс/кнопка/менеджер), из Figma
+	glow: string // per-tier цвет угловых фонариков (амбиент-глоу по углам), из Figma
 	label: string
 	labelSize: number // px размер заголовка тарифа (в Figma длинный КОРПОРАТИВНЫЙ ужат до 42, остальные 58)
 	price: string
@@ -26,6 +27,7 @@ export const slides: Slide[] = [
 		accent: '#E3A126',
 		bg: '#0D010C',
 		glass: '#9D5CC8',
+		glow: '#FF4BED',
 		label: 'ПРЕМИУМ',
 		labelSize: 58,
 		price: '350₽/месяц за устройство',
@@ -39,6 +41,7 @@ export const slides: Slide[] = [
 		accent: '#CA4EAB',
 		bg: '#060019',
 		glass: '#E65967',
+		glow: '#B42CAB',
 		label: 'СТАРТОВЫЙ',
 		labelSize: 58,
 		price: '150₽/месяц за устройство',
@@ -52,6 +55,7 @@ export const slides: Slide[] = [
 		accent: '#5C6FE6',
 		bg: '#050212',
 		glass: '#9DB1EF',
+		glow: '#596CE6',
 		label: 'СУТОЧНЫЙ',
 		labelSize: 58,
 		price: '35₽/день за устройство',
@@ -63,8 +67,9 @@ export const slides: Slide[] = [
 		id: 3,
 		days: 0,
 		accent: '#9ADAEE',
-		bg: '#021210',
+		bg: '#010612',
 		glass: '#59E6CF',
+		glow: '#59E6CF',
 		label: 'VPS',
 		labelSize: 58,
 		price: '99₽/месяц за устройство',
@@ -76,8 +81,9 @@ export const slides: Slide[] = [
 		id: 4,
 		days: 0,
 		accent: '#7FE1A5',
-		bg: '#02120A',
+		bg: '#02070f',
 		glass: '#7DE6B9',
+		glow: '#81E4A2',
 		label: 'КОРПОРАТИВНЫЙ',
 		labelSize: 42,
 		price: '99₽/месяц за устройство',

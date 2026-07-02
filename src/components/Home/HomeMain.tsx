@@ -14,7 +14,7 @@ export default function HomeMain() {
 	const activeSlide = slides[currentSlide]
 
 	useEffect(() => {
-		setTheme(activeSlide.accent, activeSlide.bg, activeSlide.glass)
+		setTheme(activeSlide.accent, activeSlide.bg, activeSlide.glass, activeSlide.glow)
 	}, [])
 	return (
 		<div>

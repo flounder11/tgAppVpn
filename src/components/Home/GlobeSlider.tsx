@@ -22,7 +22,7 @@ export default function GlobeSlider() {
 		const clamped = Math.max(0, Math.min(slides.length - 1, index))
 		if (clamped === currentSlide) return
 		setCurrentSlide(clamped)
-		setTheme(slides[clamped].accent, slides[clamped].bg, slides[clamped].glass)
+		setTheme(slides[clamped].accent, slides[clamped].bg, slides[clamped].glass, slides[clamped].glow)
 	}
 
 	// анимация свечения при свайпе

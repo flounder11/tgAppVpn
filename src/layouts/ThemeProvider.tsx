@@ -6,7 +6,7 @@ type Props = {
 }
 
 export default function ThemeProvider({ children }: Props) {
-	const { accent, bg, glass } = useThemeStore()
+	const { accent, bg, glass, glow } = useThemeStore()
 
 	useEffect(() => {
 		document.documentElement.classList.add('dark')
@@ -16,7 +16,8 @@ export default function ThemeProvider({ children }: Props) {
 		document.documentElement.style.setProperty('--accent', accent)
 		document.documentElement.style.setProperty('--background', bg)
 		document.documentElement.style.setProperty('--glass', glass)
-	}, [accent, bg, glass])
+		document.documentElement.style.setProperty('--glow', glow)
+	}, [accent, bg, glass, glow])
 
 	return <>{children}</>
 }

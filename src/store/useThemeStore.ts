@@ -5,12 +5,13 @@ interface IInitialState {
 	accent: string
 	bg: string
 	glass: string
+	glow: string
 	currentSlide: number
 	cartTariffId: string
 	cartAccent: string
 	cartBg: string
 
-	setTheme: (accent: string, bg: string, glass: string) => void
+	setTheme: (accent: string, bg: string, glass: string, glow: string) => void
 	setCurrentSlide: (index: number) => void
 	setCart: (cartTariffId: string, cartAccent: string, cartBg: string) => void
 }
@@ -19,6 +20,7 @@ const initialState = {
 	accent: '#E3A126',
 	bg: '#0D010C',
 	glass: '#9D5CC8',
+	glow: '#FF4BED',
 	currentSlide: 0,
 	cartTariffId: 'premium',
 	cartAccent: '#E3A126',
@@ -28,11 +30,12 @@ const initialState = {
 const themeStore: StateCreator<IInitialState> = set => ({
 	...initialState,
 
-	setTheme: (accent, bg, glass) =>
+	setTheme: (accent, bg, glass, glow) =>
 		set({
 			accent,
 			bg,
-			glass
+			glass,
+			glow
 		}),
 
 	setCurrentSlide: currentSlide =>
