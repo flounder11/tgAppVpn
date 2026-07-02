@@ -3,11 +3,15 @@ import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
 import { useThemeStore } from '../../store/useThemeStore'
 import Globe from './Globe'
-import { slides } from './HomeSildesData'
+import type { HomeSlide } from './useSlideTariffData'
 
 const SWIPE_THRESHOLD = 50
 
-export default function GlobeSlider() {
+interface Props {
+	slides: HomeSlide[]
+}
+
+export default function GlobeSlider({ slides }: Props) {
 	const currentSlide = useThemeStore(state => state.currentSlide)
 	const setCurrentSlide = useThemeStore(state => state.setCurrentSlide)
 	const accent = useThemeStore(state => state.accent)
@@ -61,6 +65,7 @@ export default function GlobeSlider() {
 	}
 
 	const slide = slides[currentSlide]
+	if (!slide) return null
 
 	return (
 		<div

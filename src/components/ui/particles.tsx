@@ -120,6 +120,15 @@ export const Particles: React.FC<ParticlesProps> = ({
 
 		window.addEventListener('resize', handleResize)
 
+		// В Telegram WebView расширение вьюпорта (после expandViewport()) не всегда
+		// сопровождается нативным событием resize у window — следим за реальным
+		// размером контейнера напрямую, иначе канвас остаётся размером с исходный
+		// (свёрнутый) экран и звёзды рисуются только в верхней части.
+		const resizeObserver = new ResizeObserver(handleResize)
+		if (canvasContainerRef.current) {
+			resizeObserver.observe(canvasContainerRef.current)
+		}
+
 		return () => {
 			if (rafID.current != null) {
 				window.cancelAnimationFrame(rafID.current)
@@ -128,6 +137,7 @@ export const Particles: React.FC<ParticlesProps> = ({
 				clearTimeout(resizeTimeout.current)
 			}
 			window.removeEventListener('resize', handleResize)
+			resizeObserver.disconnect()
 		}
 	}, [color])
 

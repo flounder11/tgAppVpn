@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useAuthStore } from '../../store/useAuthStore'
 
 interface IEmailModal {
 	isOpen: boolean
@@ -75,19 +76,29 @@ export default function EmailModal({
 		codeRefs.current[lastFilledIndex]?.focus()
 	}
 
+	const isLoading = useAuthStore(state => state.isLoading)
+	const error = useAuthStore(state => state.error)
+	const sendVerificationCode = useAuthStore(state => state.sendVerificationCode)
+	const verifyEmail = useAuthStore(state => state.verifyEmail)
+
 	if (!isOpen) return null
 
-	const handleSendCode = () => {
-		setStep('code')
-		setCooldown(30)
+	const handleSendCode = async () => {
+		const ok = await sendVerificationCode(email)
+		if (ok) {
+			setStep('code')
+			setCooldown(30)
+		}
 	}
 
-	const handleResend = () => {
-		setCooldown(30)
+	const handleResend = async () => {
+		const ok = await sendVerificationCode(email)
+		if (ok) setCooldown(30)
 	}
 
-	const handleConfirm = () => {
-		onSuccess(email)
+	const handleConfirm = async () => {
+		const ok = await verifyEmail(email, code.join(''))
+		if (ok) onSuccess(email)
 	}
 
 	return (
@@ -112,6 +123,10 @@ export default function EmailModal({
 							</p>
 						</div>
 
+						{error && (
+							<p className="text-[#EB5454] text-xs mt-2">{error}</p>
+						)}
+
 						<div className="flex justify-between mt-2">
 							<button
 								onClick={onClose}
@@ -121,7 +136,8 @@ export default function EmailModal({
 							</button>
 							<button
 								onClick={handleSendCode}
-								className="bg-accent/10 border border-accent rounded-2xl text-accent h-[35px] text-center text-sm max-w-[153px] w-full"
+								disabled={isLoading || !email}
+								className="bg-accent/10 border border-accent rounded-2xl text-accent h-[35px] text-center text-sm max-w-[153px] w-full disabled:opacity-50"
 							>
 								Отправить код
 							</button>
@@ -159,7 +175,8 @@ export default function EmailModal({
 						{canResend ? (
 							<button
 								onClick={handleResend}
-								className="text-accent text-xs underline"
+								disabled={isLoading}
+								className="text-accent text-xs underline disabled:opacity-50"
 							>
 								Отправить повторно
 							</button>
@@ -167,6 +184,10 @@ export default function EmailModal({
 							<p className="text-white/40 text-xs">
 								Отправить повторно ({cooldown} сек)
 							</p>
+						)}
+
+						{error && (
+							<p className="text-[#EB5454] text-xs mt-2">{error}</p>
 						)}
 
 						<div className="flex justify-between mt-2">
@@ -178,7 +199,8 @@ export default function EmailModal({
 							</button>
 							<button
 								onClick={handleConfirm}
-								className="bg-accent/10 border border-accent rounded-2xl text-accent h-[35px] text-center text-sm max-w-[153px] w-full"
+								disabled={isLoading || code.some(d => !d)}
+								className="bg-accent/10 border border-accent rounded-2xl text-accent h-[35px] text-center text-sm max-w-[153px] w-full disabled:opacity-50"
 							>
 								Подтвердить
 							</button>

@@ -1,14 +1,64 @@
+import { openLink } from '@telegram-apps/sdk-react'
+import { useEffect } from 'react'
+import type { PaymentProviderName } from '../../../api/types'
 import CloseImg from '../../../assets/close-circle.svg'
 import WataImg from '../../../assets/wata.svg'
+import { useAuthStore } from '../../../store/useAuthStore'
+import { usePaymentStore } from '../../../store/usePaymentStore'
 import { Drawer, DrawerClose, DrawerContent } from '../../ui/drawer'
 import CurrentMethod from './CurrentMethod'
 
 interface IPaymentMethod {
 	open: boolean
 	onOpenChange: (open: boolean) => void
+	amountRub: number
 }
 
-export default function PaymentMethod({ open, onOpenChange }: IPaymentMethod) {
+// Иконок под остальных провайдеров в проекте нет — используем общий значок Wata как заглушку
+const NON_SELECTABLE_PROVIDERS: PaymentProviderName[] = ['balance', 'admin']
+
+export default function PaymentMethod({
+	open,
+	onOpenChange,
+	amountRub
+}: IPaymentMethod) {
+	const providers = usePaymentStore(state => state.providers)
+	const fetchProviders = usePaymentStore(state => state.fetchProviders)
+	const createPayment = usePaymentStore(state => state.createPayment)
+	const isLoading = usePaymentStore(state => state.isLoading)
+	const error = usePaymentStore(state => state.error)
+	const fetchMe = useAuthStore(state => state.fetchMe)
+
+	useEffect(() => {
+		if (open) fetchProviders()
+	}, [open, fetchProviders])
+
+	const selectableProviders = providers.filter(
+		p => p.enabled && p.configured && !NON_SELECTABLE_PROVIDERS.includes(p.name)
+	)
+
+	const handleSelect = async (provider: PaymentProviderName) => {
+		const payment = await createPayment({
+			type: 'topup',
+			provider,
+			amount_rub: amountRub,
+			currency: 'RUB',
+			description: 'Пополнение баланса'
+		})
+		if (!payment) return
+
+		if (payment.payment_url) {
+			try {
+				openLink(payment.payment_url)
+			} catch {
+				window.location.assign(payment.payment_url)
+			}
+		} else {
+			fetchMe()
+		}
+		onOpenChange(false)
+	}
+
 	return (
 		<Drawer
 			open={open}
@@ -32,25 +82,27 @@ export default function PaymentMethod({ open, onOpenChange }: IPaymentMethod) {
 						</div>
 
 						<div className="font-manrope mt-7 mb-14 text-white text-lg flex flex-col gap-y-2">
-							<CurrentMethod
-								title="Wata (СБП)"
-								img={WataImg}
-							/>
+							{selectableProviders.length === 0 && (
+								<p className="text-white/40 text-sm text-center">
+									{isLoading
+										? 'Загрузка способов оплаты...'
+										: 'Нет доступных способов оплаты'}
+								</p>
+							)}
 
-							<CurrentMethod
-								title="Wata (СБП)"
-								img={WataImg}
-							/>
+							{selectableProviders.map(provider => (
+								<CurrentMethod
+									key={provider.name}
+									title={provider.display_name}
+									img={WataImg}
+									disabled={isLoading}
+									onClick={() => handleSelect(provider.name)}
+								/>
+							))}
 
-							<CurrentMethod
-								title="Wata (СБП)"
-								img={WataImg}
-							/>
-
-							<CurrentMethod
-								title="Wata (СБП)"
-								img={WataImg}
-							/>
+							{error && (
+								<p className="text-[#EB5454] text-sm text-center">{error}</p>
+							)}
 						</div>
 					</div>
 				</div>

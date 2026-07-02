@@ -2,21 +2,24 @@ import { useLoader } from '@react-three/fiber'
 import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
 import { Mesh, MeshStandardMaterial, TextureLoader } from 'three'
-import { slides } from './HomeSildesData' // на уровень выше из Globe/
+import { TARIFF_THEMES } from '../../lib/tariffTheme'
 
 interface Props {
 	activeSlide: number
 }
 
-// вынесено за пределы компонента — стабильная ссылка, useLoader не зацикливается
-const TEXTURE_URLS = slides.map(s => s.texture)
+// вынесено за пределы компонента — стабильная ссылка, useLoader не зацикливается.
+// Текстур всего 4 (по числу тем в TARIFF_THEMES), при большем числе тарифов
+// они циклически переиспользуются по индексу слайда.
+const TEXTURE_URLS = TARIFF_THEMES.map(t => t.texture)
 
 export default function Earth({ activeSlide }: Props) {
 	const mesh = useRef<Mesh>(null!)
 	const textures = useLoader(TextureLoader, TEXTURE_URLS)
+	const themeIndex = activeSlide % TARIFF_THEMES.length
 
 	useEffect(() => {
-		const target = slides[activeSlide]
+		const target = TARIFF_THEMES[themeIndex]
 		const material = mesh.current.material as MeshStandardMaterial
 		const tl = gsap.timeline()
 
@@ -35,7 +38,7 @@ export default function Earth({ activeSlide }: Props) {
 				duration: 0.55,
 				ease: 'power2.out',
 				onComplete: () => {
-					material.map = textures[activeSlide]
+					material.map = textures[themeIndex]
 					material.needsUpdate = true
 				}
 			},
@@ -49,7 +52,7 @@ export default function Earth({ activeSlide }: Props) {
 		return () => {
 			tl.kill()
 		}
-	}, [activeSlide, textures])
+	}, [themeIndex, textures])
 
 	return (
 		<mesh
@@ -57,7 +60,7 @@ export default function Earth({ activeSlide }: Props) {
 			rotation-x={0.15}
 		>
 			<sphereGeometry args={[2, 96, 96]} />
-			<meshStandardMaterial map={textures[activeSlide]} />
+			<meshStandardMaterial map={textures[themeIndex]} />
 		</mesh>
 	)
 }

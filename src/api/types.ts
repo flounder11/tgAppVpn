@@ -12,10 +12,10 @@ export interface ApiErrorResponse {
 
 export interface User {
 	id: string
-	email: string
-	name: string
-	telegram_id: number
-	username: string
+	email: string | null
+	name: string | null
+	telegram_id: number | null
+	username: string | null
 	email_verified: boolean
 	balance_rub: number
 	created_at: string
@@ -56,7 +56,7 @@ export interface Subscription {
 export interface CreateSubscriptionPayload {
 	user_id: string
 	tariff_id: string
-	period_id: string
+	period_id?: string
 	duration_days?: number
 	pay_with_balance?: boolean
 	amount_kop?: number
@@ -113,11 +113,22 @@ export interface PaymentProvider {
 	currency: string
 }
 
+export type PaymentType =
+	| 'subscription'
+	| 'extend'
+	| 'topup'
+	| 'admin_topup'
+	| 'admin_withdraw'
+	| 'referral_bonus'
+	| 'traffic_package'
+	| 'device_upgrade'
+	| string
+
 export interface CreatePaymentPayload {
 	user_id: string
-	tariff_id: string
-	period_id: string
-	type: 'subscription' | string
+	tariff_id?: string
+	period_id?: string
+	type: PaymentType
 	provider: PaymentProviderName
 	amount_rub: number
 	currency: string
@@ -134,8 +145,8 @@ export type PaymentStatus =
 export interface Payment {
 	id: string
 	user_id: string
-	tariff_id: string
-	type: string
+	tariff_id?: string
+	type: PaymentType
 	status: PaymentStatus
 	provider: PaymentProviderName
 	amount_rub: number
@@ -177,6 +188,16 @@ export interface ReferralBasicStats {
 	total_earned_rub: number
 	bonus_percent: number
 	min_payout_rub: number
+}
+
+export interface ReferralCode {
+	referral_code: string
+}
+
+export interface ReferralClaimLevelBonusResult {
+	level: number
+	bonus_kopeks: number
+	bonus_rub: number
 }
 
 export interface CreateWithdrawalPayload {

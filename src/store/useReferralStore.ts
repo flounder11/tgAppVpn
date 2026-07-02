@@ -15,12 +15,15 @@ interface ReferralState {
 	extendedStats: ReferralExtendedStats | null
 	basicStats: ReferralBasicStats | null
 	level: ReferralLevel | null
+	code: string | null
 	isLoading: boolean
 	error: string | null
 
 	fetchExtendedStats: () => Promise<void>
 	fetchUserStats: () => Promise<void>
 	fetchLevel: () => Promise<void>
+	fetchCode: () => Promise<void>
+	claimLevelBonus: () => Promise<boolean>
 	requestWithdrawal: (
 		amountKopeks: number,
 		paymentDetails: Record<string, unknown>
@@ -33,6 +36,7 @@ export const useReferralStore = create<ReferralState>()(
 			extendedStats: null,
 			basicStats: null,
 			level: null,
+			code: null,
 			isLoading: false,
 			error: null,
 
@@ -88,6 +92,44 @@ export const useReferralStore = create<ReferralState>()(
 				}
 			},
 
+			fetchCode: async () => {
+				const userId = useAuthStore.getState().user?.id
+				if (!userId) return
+				set({ isLoading: true, error: null })
+				try {
+					const res = await referralsApi.getCode(userId)
+					set({ code: res.data.referral_code, isLoading: false })
+				} catch (err) {
+					set({
+						isLoading: false,
+						error:
+							err instanceof ApiError
+								? err.message
+								: 'Не удалось загрузить реферальный код'
+					})
+				}
+			},
+
+			claimLevelBonus: async () => {
+				const userId = useAuthStore.getState().user?.id
+				if (!userId) return false
+				set({ isLoading: true, error: null })
+				try {
+					await referralsApi.claimLevelBonus(userId)
+					set({ isLoading: false })
+					return true
+				} catch (err) {
+					set({
+						isLoading: false,
+						error:
+							err instanceof ApiError
+								? err.message
+								: 'Не удалось получить бонус'
+					})
+					return false
+				}
+			},
+
 			requestWithdrawal: async (amountKopeks, paymentDetails) => {
 				const userId = useAuthStore.getState().user?.id
 				if (!userId) return false
@@ -118,7 +160,8 @@ export const useReferralStore = create<ReferralState>()(
 			partialize: state => ({
 				extendedStats: state.extendedStats,
 				basicStats: state.basicStats,
-				level: state.level
+				level: state.level,
+				code: state.code
 			})
 		}
 	)

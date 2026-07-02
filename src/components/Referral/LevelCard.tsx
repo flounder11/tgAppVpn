@@ -1,28 +1,23 @@
+import type { ReferralLevel } from '../../api/types'
 import { Progress } from '../ui/progress'
 import LevelCircle from './LevelCircle'
 import LevelStep from './LevelStep'
 
-interface ILevelData {
-	level: number
-	label: string
-	discount: number
-	referralsCount: number
-	referralsTarget: number
-	nextLevelDiff: number
-	nextLevelName: string
-	nextLevelPercent: number
-}
-
 interface ILevelCard {
-	data: ILevelData
+	data: ReferralLevel
+	onClaimBonus?: () => void
+	isClaiming?: boolean
 }
 
-export default function LevelCard({ data }: ILevelCard) {
-	const progressPercent = (data.referralsCount / data.referralsTarget) * 100
-	const referralCounter = data.referralsTarget - data.referralsCount
+// Фиксированная лестница уровней для наглядности — эндпоинта со списком всех
+// уровней в API нет, проценты комиссий по уровням не запрашиваются с бэкенда.
+const LEVEL_DISCOUNTS = [10, 15, 18, 20, 25]
 
-	const levelDiscounts = [10, 15, 18, 20, 25]
-
+export default function LevelCard({
+	data,
+	onClaimBonus,
+	isClaiming
+}: ILevelCard) {
 	return (
 		<div className="border border-accent/50 rounded-2xl pt-4 px-3 pb-2.5 bg-background">
 			<div className="flex items-center gap-x-4">
@@ -39,10 +34,10 @@ export default function LevelCard({ data }: ILevelCard) {
 							Уровень {data.level}
 						</p>
 						<span className="text-xs font-medium bg-accent text-white px-4 py-0.5 rounded-full">
-							-{data.discount}%
+							{data.commission_percent}%
 						</span>
 						<span className="text-[10px] font-medium text-accent">
-							{data.label}
+							{data.name}
 						</span>
 					</div>
 					<p className="text-white/40 text-sm mt-0.5">
@@ -50,29 +45,38 @@ export default function LevelCard({ data }: ILevelCard) {
 					</p>
 
 					<div className="text-white/40 text-xs flex justify-between mt-4 mb-2">
-						<p>{data.referralsCount} платных рефералов</p>
-						<span>
-							{data.referralsCount}/{data.referralsTarget}
-						</span>
+						<p>{data.paid_referrals} платных рефералов</p>
+						<span>{data.progress_percent}%</span>
 					</div>
 
 					<Progress
-						value={progressPercent}
+						value={data.progress_percent}
 						className="mb-1.5"
 					/>
 
-					<p className="text-white/60 text-xs">
-						Еще <span className="text-white">{referralCounter}</span> до
-						<span className="text-white">{data.nextLevelName}</span> (15%)• 🎁
-						1000 ₽ на баланс
-					</p>
+					{data.next_level_at > 0 && (
+						<p className="text-white/60 text-xs">
+							Еще <span className="text-white">{data.next_level_at}</span> до
+							следующего уровня
+						</p>
+					)}
+
+					{data.has_unclaimed_bonus && (
+						<button
+							onClick={onClaimBonus}
+							disabled={isClaiming}
+							className="mt-2 text-xs font-medium bg-accent/10 border border-accent text-accent rounded-2xl px-3 py-1.5 disabled:opacity-50"
+						>
+							🎁 Забрать {(data.bonus_kopeks / 100).toFixed(0)} ₽
+						</button>
+					)}
 				</div>
 			</div>
 
 			<div>
 				<LevelStep
 					currentLevel={data.level}
-					levelDiscounts={levelDiscounts}
+					levelDiscounts={LEVEL_DISCOUNTS}
 				/>
 			</div>
 		</div>

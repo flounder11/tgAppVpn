@@ -11,14 +11,14 @@ interface AuthState {
 	error: string | null
 
 	fetchMe: () => Promise<void>
-	verifyEmail: (code: string) => Promise<boolean>
-	resendVerification: () => Promise<boolean>
+	sendVerificationCode: (email: string) => Promise<boolean>
+	verifyEmail: (email: string, code: string) => Promise<boolean>
 	clear: () => void
 }
 
 export const useAuthStore = create<AuthState>()(
 	persist(
-		(set, get) => ({
+		set => ({
 			user: null,
 			isLoading: false,
 			error: null,
@@ -39,15 +39,31 @@ export const useAuthStore = create<AuthState>()(
 				}
 			},
 
-			verifyEmail: async (code: string) => {
-				const email = get().user?.email
-				if (!email) return false
+			// Используется и для первичной привязки email, и для повторной отправки кода —
+			// отдельного эндпоинта на "привязать email" в API нет, resend-verification берёт его на себя.
+			sendVerificationCode: async (email: string) => {
+				set({ isLoading: true, error: null })
+				try {
+					await authApi.resendVerification(email)
+					set({ isLoading: false })
+					return true
+				} catch (err) {
+					set({
+						isLoading: false,
+						error:
+							err instanceof ApiError ? err.message : 'Не удалось отправить код'
+					})
+					return false
+				}
+			},
+
+			verifyEmail: async (email: string, code: string) => {
 				set({ isLoading: true, error: null })
 				try {
 					await authApi.verifyEmail(email, code)
 					set(state => ({
 						user: state.user
-							? { ...state.user, email_verified: true }
+							? { ...state.user, email, email_verified: true }
 							: state.user,
 						isLoading: false
 					}))
@@ -59,24 +75,6 @@ export const useAuthStore = create<AuthState>()(
 							err instanceof ApiError
 								? err.message
 								: 'Неверный код подтверждения'
-					})
-					return false
-				}
-			},
-
-			resendVerification: async () => {
-				const email = get().user?.email
-				if (!email) return false
-				set({ isLoading: true, error: null })
-				try {
-					await authApi.resendVerification(email)
-					set({ isLoading: false })
-					return true
-				} catch (err) {
-					set({
-						isLoading: false,
-						error:
-							err instanceof ApiError ? err.message : 'Не удалось отправить код'
 					})
 					return false
 				}
