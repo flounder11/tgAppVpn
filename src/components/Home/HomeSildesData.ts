@@ -1,8 +1,8 @@
 // src/components/Home/slidesData.ts
-import World1 from '../../assets/World 1.svg'
-import World2 from '../../assets/World 2.svg'
-import World3 from '../../assets/World 3.svg'
-import World4 from '../../assets/World 4.svg'
+import World1 from '../../assets/World1.svg'
+import World2 from '../../assets/World2.svg'
+import World3 from '../../assets/World3.svg'
+import World4 from '../../assets/World4.svg'
 
 export interface Slide {
 	id: number
