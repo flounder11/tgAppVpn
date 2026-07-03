@@ -1,6 +1,6 @@
 // src/components/Home/GlobeSlider.tsx
 import gsap from 'gsap'
-import { useEffect, useRef } from 'react'
+import { Suspense, useEffect, useRef } from 'react'
 import { useThemeStore } from '../../store/useThemeStore'
 import Globe from './Globe'
 import type { HomeSlide } from './useSlideTariffData'
@@ -86,7 +86,13 @@ export default function GlobeSlider({ slides }: Props) {
 
 			{/* Сфера */}
 			<div className="absolute inset-0 z-10">
-				<Globe activeSlide={currentSlide} />
+				<Suspense
+					fallback={
+						<div className="w-full h-full rounded-full bg-white/5 animate-pulse" />
+					}
+				>
+					<Globe activeSlide={currentSlide} />
+				</Suspense>
 			</div>
 
 			{/* Кольцо-обводка */}

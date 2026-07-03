@@ -1,13 +1,13 @@
 import { MessageCircle } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import LogoSvg from '../../assets/svgTsx/logo'
 import BonusSvg from '../../assets/svgTsx/bonus'
 import HomeSvg from '../../assets/svgTsx/home'
+import LogoSvg from '../../assets/svgTsx/logo'
 import MoneySvg from '../../assets/svgTsx/money'
 import ProfileSvg from '../../assets/svgTsx/profile'
 import SubscriptionSvg from '../../assets/svgTsx/subscription'
-import type { ISvgProps } from '../../types/svgProps'
 import { useAuthStore } from '../../store/useAuthStore'
+import type { ISvgProps } from '../../types/svgProps'
 
 type NavItem = {
 	id: string
@@ -33,14 +33,10 @@ export default function Sidebar() {
 		<aside className="hidden md:flex md:flex-col md:fixed md:inset-y-0 md:left-0 md:w-56 md:px-4 md:py-6 md:border-r md:border-white/10 md:bg-white/[0.02] md:backdrop-blur-xs z-40">
 			<div className="flex items-center gap-x-2 mb-5">
 				<LogoSvg />
-				<div>
-					<p className="text-white font-tektur font-bold leading-none">
-						VoxiProxy
-					</p>
-					<span className="text-[10px] text-green-400 font-manrope">
-						● Онлайн
-					</span>
-				</div>
+
+				<p className="text-white font-tektur font-bold leading-none">
+					VoxiProxy
+				</p>
 			</div>
 
 			<button

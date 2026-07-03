@@ -7,10 +7,53 @@
 			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
 		/>
 		<title>miniappvpn</title>
-		<script src="https://tweakcn.com/live-preview.min.js"></script>
+		<script
+			defer
+			src="https://tweakcn.com/live-preview.min.js"
+		></script>
+		<style>
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				background: #0d010c;
+			}
+
+			@keyframes vp-pulse {
+				0%,
+				100% {
+					opacity: 0.4;
+				}
+				50% {
+					opacity: 1;
+				}
+			}
+		</style>
 	</head>
 	<body>
-		<div id="root"></div>
+		<div id="root">
+			<div
+				style="
+					width: 100%;
+					min-height: 100dvh;
+					background: #0d010c;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					box-sizing: border-box;
+				"
+			>
+				<div
+					style="
+						width: 64px;
+						height: 64px;
+						border-radius: 9999px;
+						background: rgba(255, 255, 255, 0.08);
+						animation: vp-pulse 1.4s ease-in-out infinite;
+					"
+				></div>
+			</div>
+		</div>
 		<script
 			type="module"
 			src="/src/main.tsx"
